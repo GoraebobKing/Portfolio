@@ -24,6 +24,8 @@ class PermissionCheck {
 
     private var listener : PermissionActivity.PermissionListener? = null
     private var permission : Array<String>? = null
+    private var selectMessage = ""
+    private var needMessage = ""
 
     fun with(activity: Activity): PermissionCheck {
         this.activity = activity
@@ -40,9 +42,21 @@ class PermissionCheck {
         return this
     }
 
+    fun seSelectMessage(message : String) : PermissionCheck {
+        this.selectMessage = message
+        return this
+    }
+
+    fun setNeedMessage(message : String) : PermissionCheck {
+        this.needMessage = message
+        return this
+    }
+
     fun check() {
         val intent = Intent(activity, PermissionActivity::class.java)
         intent.putExtra("permission", permission)
+        intent.putExtra("selectMessage", selectMessage)
+        intent.putExtra("needMessage", needMessage)
         activity.startActivity(intent)
         activity.overridePendingTransition(0, 0)
         PermissionActivity.listener = this.listener
