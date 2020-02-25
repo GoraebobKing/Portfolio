@@ -50,5 +50,6 @@ class IntroActivity : BindingActivity<ActivityIntroBinding>() {
 
         var intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+        finish()
     }
 }

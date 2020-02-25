@@ -11,7 +11,7 @@ import android.os.Bundle
 import android.provider.Settings
 import androidx.core.app.ActivityCompat
 import kr.co.portfolio.R
-import kr.co.portfolio.common.Log
+import kr.co.portfolio.common.Logger
 import kr.co.portfolio.dao.PermissionModel
 import java.util.ArrayList
 
@@ -25,7 +25,10 @@ class PermissionActivity : Activity() {
     private var selectMessage = ""
     private var needMessage = ""
 
-
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(0, 0)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,7 +82,7 @@ class PermissionActivity : Activity() {
                     }
                 }
 
-                Log.e("퍼미션 체크 합니다 : ${permissions[i]}   $isGranted")
+                Logger.e("퍼미션 체크 합니다 : ${permissions[i]}   $isGranted")
             }
         }
 

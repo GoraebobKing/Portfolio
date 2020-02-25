@@ -3,7 +3,7 @@ package kr.co.portfolio.common
 import android.util.Log
 import kr.co.portfolio.BuildConfig
 
-class Log {
+class Logger {
 
     companion object {
         private var TAG  = "[Portfolio]"
