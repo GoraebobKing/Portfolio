@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="@string/bottom_menu_1"
+        android:id="@+id/bottom_menu_1"
+        android:icon="@drawable/ic_tab_home_on"/>
+
+    <item
+        android:title="@string/bottom_menu_2"
+        android:id="@+id/bottom_menu_2"
+        android:icon="@drawable/ic_tab_health_on"/>
+
+    <item
+        android:title="@string/bottom_menu_3"
+        android:id="@+id/bottom_menu_3"
+        android:icon="@drawable/ic_tab_reservation_on"/>
+
+    <item
+        android:title="@string/bottom_menu_4"
+        android:id="@+id/bottom_menu_4"
+        android:icon="@drawable/ic_tab_setting_on"/>
+
+</menu>

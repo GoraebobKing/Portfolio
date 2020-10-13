@@ -1,7 +1,44 @@
 <resources>
-    <string name="app_name">Portfolio</string>
+    <string name="app_name">Sample</string>
 
-    <string name="btn_setting">설정하기</string>
-    <string name="btn_ok">확인</string>
-    <string name="btn_cancel">취소</string>
+    <string name="bottom_menu_1">모션레이아웃</string>
+    <string name="bottom_menu_2">코디네이터</string>
+    <string name="bottom_menu_3">커스텀뷰</string>
+    <string name="bottom_menu_4">RX연습</string>
+
+    <string-array name="tel">
+        <item>010</item>
+        <item>011</item>
+        <item>016</item>
+        <item>017</item>
+        <item>018</item>
+        <item>019</item>
+    </string-array>
+
+    <string-array name="bank">
+        <item>농협</item>
+        <item>신한</item>
+        <item>IBK기업</item>
+        <item>하나은행</item>
+        <item>우리</item>
+        <item>국민</item>
+        <item>SC제일</item>
+        <item>대구</item>
+        <item>부산</item>
+        <item>광주</item>
+        <item>새마을</item>
+        <item>경남</item>
+        <item>전북</item>
+        <item>제주</item>
+        <item>산업</item>
+        <item>우체국</item>
+        <item>신협</item>
+        <item>수협</item>
+        <item>씨티</item>
+        <item>케이뱅크</item>
+        <item>도이치</item>
+        <item>JP모간</item>
+        <item>산림조합</item>
+        <item>저축은행</item>
+    </string-array>
 </resources>

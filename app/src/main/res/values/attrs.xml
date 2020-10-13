@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomBarView">
+        <attr name="corners" format="dimension"/>
+        <attr name="bg_color" format="color"/>
+        <attr name="in_color" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="CustomProgressView">
+        <attr name="end_radius" format="dimension"/>
+        <attr name="progress_width" format="dimension"/>
+        <attr name="back_progress" format="color"/>
+        <attr name="start_gradient" format="color"/>
+        <attr name="end_gradient" format="color"/>
+        <attr name="txt" format="string"/>
+        <attr name="txt_size" format="dimension"/>
+        <attr name="txt_color" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="CustomTextEdit">
+        <attr name="is_delete" format="boolean"/>
+        <attr name="is_passwd" format="boolean"/>
+        <attr name="img_active" format="reference"/>
+        <attr name="img_inactive" format="reference"/>
+        <attr name="lineColor_active" format="color"/>
+        <attr name="lineColor_inactive" format="color"/>
+        <attr name="lineHeight" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="CustomDotIndicator">
+        <attr name="dot_space" format="dimension"/>
+        <attr name="dot_selected_size" format="dimension"/>
+        <attr name="dot_un_selected_size" format="dimension"/>
+        <attr name="dot_selected_colr" format="color"/>
+        <attr name="dot_un_selected_colr" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="CustomSpinner">
+        <attr name="spinner_item_list" format="reference"/>
+        <attr name="spinner_item_height" format="dimension"/>
+        <attr name="spinner_item_color" format="color"/>
+        <attr name="spinner_item_text_size" format="dimension"/>
+        <attr name="spinner_item_text_color" format="color"/>
+        <attr name="spinner_item_text_font" format="integer"/>
+    </declare-styleable>
+</resources>

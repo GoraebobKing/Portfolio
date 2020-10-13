@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetStart="@id/motion_start"
+        motion:constraintSetEnd="@id/motion_end"
+        app:motionInterpolator="linear"
+        app:duration="1000">
+
+        <OnSwipe
+            motion:dragDirection="dragUp"
+            app:touchAnchorId="@id/ns_scroll"
+            motion:touchAnchorSide="top"/>
+
+        <KeyFrameSet>
+
+            <KeyPosition
+                motion:framePosition="50"
+                motion:keyPositionType="deltaRelative"
+                motion:motionTarget="@id/btn_tree"
+                motion:percentX="0"
+                motion:percentY="1" />
+
+            <KeyPosition
+                motion:framePosition="50"
+                motion:keyPositionType="deltaRelative"
+                motion:motionTarget="@id/btn_cafe"
+                motion:percentX="0"
+                motion:percentY="1" />
+
+            <KeyPosition
+                motion:framePosition="50"
+                motion:keyPositionType="deltaRelative"
+                motion:motionTarget="@id/btn_habit"
+                motion:percentX="0"
+                motion:percentY="1" />
+
+            <KeyPosition
+                motion:framePosition="50"
+                motion:keyPositionType="deltaRelative"
+                motion:motionTarget="@id/btn_charge"
+                motion:percentX="0"
+                motion:percentY="1" />
+
+        </KeyFrameSet>
+
+
+
+    </Transition>
+
+
+    <ConstraintSet
+        android:id="@+id/motion_start">
+
+        <Constraint
+            android:id="@id/view_background"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="#000000"/>
+
+        <Constraint
+            android:id="@id/btn_naver"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_facebook"
+            android:src="@drawable/img_logoin_sns_1"/>
+
+        <Constraint
+            android:id="@id/btn_facebook"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_naver"
+            app:layout_constraintEnd_toStartOf="@id/btn_kakao"
+            android:src="@drawable/img_logoin_sns_2"/>
+
+        <Constraint
+            android:id="@id/btn_kakao"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_facebook"
+            app:layout_constraintEnd_toStartOf="@id/btn_skt"
+            android:src="@drawable/img_logoin_sns_3"/>
+
+        <Constraint
+            android:id="@id/btn_skt"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_kakao"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/img_logoin_sns_5"/>
+
+        <Constraint
+            android:id="@id/btn_tree"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/img_main_co_2_effect_01_tree"
+            android:visibility="gone"/>
+
+        <Constraint
+            android:id="@+id/btn_cafe"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/img_main_my_03"
+            android:visibility="gone"/>
+
+        <Constraint
+            android:id="@+id/btn_habit"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/img_main_my_04"
+            android:visibility="gone"/>
+
+        <Constraint
+            android:id="@+id/btn_charge"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/img_main_point_charge"
+            android:visibility="gone"/>
+        <Constraint
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
+        <Constraint
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
+        <Constraint
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
+        <Constraint
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
+        <Constraint
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
+        <Constraint
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
+
+    </ConstraintSet>
+
+
+    <ConstraintSet android:id="@+id/motion_end">
+
+        <Constraint
+            android:id="@id/view_background"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="#000000"/>
+
+        <Constraint
+            android:id="@id/btn_naver"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_facebook"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:src="@drawable/img_logoin_sns_1"/>
+
+        <Constraint
+            android:id="@id/btn_facebook"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_naver"
+            app:layout_constraintEnd_toStartOf="@id/btn_kakao"
+            android:src="@drawable/img_logoin_sns_2"/>
+
+        <Constraint
+            android:id="@id/btn_kakao"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_facebook"
+            app:layout_constraintEnd_toStartOf="@id/btn_skt"
+            android:src="@drawable/img_logoin_sns_3"/>
+
+        <Constraint
+            android:id="@id/btn_skt"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_kakao"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/img_logoin_sns_5"/>
+
+        <Constraint
+            android:id="@id/btn_tree"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@id/btn_naver"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_cafe"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:src="@drawable/img_main_co_2_effect_01_tree"
+            android:visibility="visible"/>
+
+        <Constraint
+            android:id="@+id/btn_cafe"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/btn_naver"
+            app:layout_constraintStart_toEndOf="@id/btn_tree"
+            app:layout_constraintEnd_toStartOf="@id/btn_habit"
+            android:src="@drawable/img_main_my_03"
+            android:visibility="visible"/>
+
+        <Constraint
+            android:id="@+id/btn_habit"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@id/btn_naver"
+            app:layout_constraintStart_toEndOf="@id/btn_cafe"
+            app:layout_constraintEnd_toStartOf="@id/btn_charge"
+            android:src="@drawable/img_main_my_04"
+            android:visibility="visible"/>
+
+        <Constraint
+            android:id="@+id/btn_charge"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@id/btn_naver"
+            app:layout_constraintStart_toEndOf="@id/btn_habit"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/img_main_point_charge"
+            android:visibility="visible"/>
+
+    </ConstraintSet>
+</MotionScene>

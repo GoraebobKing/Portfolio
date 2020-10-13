@@ -1,83 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <data>
-        <variable
-            name="mainModel"
-            type="kr.co.portfolio.ui.activity.MainActivity" />
-    </data>
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".ui.activity.MainActivity">
 
-        <androidx.drawerlayout.widget.DrawerLayout
-            android:id="@+id/drawerLayout"
+        <FrameLayout
+            android:id="@+id/frame_layer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true">
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bottom_navi"/>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="52dp"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageButton
-                        android:id="@+id/ivBtnMenu"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        android:src="@drawable/ico_menu"
-                        android:onClick="@{(v) ->mainModel.menuClick()}"
-                        android:background="@null"/>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <com.google.android.material.navigation.NavigationView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="end">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageButton
-                        android:id="@+id/ivBtnBack"
-                        android:layout_width="52dp"
-                        android:layout_height="52dp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        android:src="@drawable/btn_close"
-                        android:background="@null"
-                        android:onClick="@{(v) ->mainModel.menuClose()}"/>
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:scaleType="fitXY"
-                        app:layout_constraintTop_toBottomOf="@id/ivBtnBack"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:src="@drawable/taeri_1"/>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </com.google.android.material.navigation.NavigationView>
-
-        </androidx.drawerlayout.widget.DrawerLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navi"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#ffffff"
+            app:itemIconTint="@drawable/bottom_navigation_item_colors"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/bottom_menu"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </layout>
