@@ -1,4 +1,4 @@
-package kr.co.portfolio.viewmodel
+package kr.co.portfolio.dagger.anno
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

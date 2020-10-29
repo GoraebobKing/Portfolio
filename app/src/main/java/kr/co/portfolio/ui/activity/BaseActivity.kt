@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import dagger.android.AndroidInjection
 import kr.co.portfolio.viewmodel.BaseViewModel
 import kr.co.portfolio.viewmodel.DaggerViewModel
-import kr.co.portfolio.viewmodel.ViewModelFactory
+import kr.co.portfolio.dagger.anno.ViewModelFactory
 import javax.inject.Inject
 
 /**

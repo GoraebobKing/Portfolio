@@ -4,6 +4,7 @@ import android.content.Intent
 import kr.co.portfolio.R
 import kr.co.portfolio.databinding.FragmentHomeBinding
 import kr.co.portfolio.ui.activity.AnotherActivity
+import kr.co.portfolio.ui.activity.CoroutineActivity
 import kr.co.portfolio.ui.activity.DaggerActivity
 
 /**
@@ -34,5 +35,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 ctx.startActivity(Intent(ctx, AnotherActivity::class.java))
             }
         }
+
+        binding.btn3.setOnClickListener {
+            context?.let {ctx ->
+                ctx.startActivity(Intent(ctx, CoroutineActivity::class.java))
+            }
+        }
+
     }
 }

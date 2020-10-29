@@ -36,15 +36,14 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_gravity="bottom"
-            android:background="#ffffff"
-            app:itemIconTint="@drawable/bottom_navigation_item_colors"
-            app:labelVisibilityMode="labeled"
-            app:menu="@menu/bottom_menu"
-            app:layout_behavior="kr.co.kwonsample.ui.custom.BottomNavigationBehavior"/>
+<!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:layout_gravity="bottom"-->
+<!--            android:background="#ffffff"-->
+<!--            app:itemIconTint="@drawable/bottom_navigation_item_colors"-->
+<!--            app:labelVisibilityMode="labeled"-->
+<!--            app:menu="@menu/bottom_menu"/>-->
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nv_scroll"

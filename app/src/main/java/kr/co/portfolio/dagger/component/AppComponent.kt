@@ -4,10 +4,7 @@ import android.content.Context
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
-import kr.co.portfolio.dagger.module.ActivityBindingModule
-import kr.co.portfolio.dagger.module.RetrofitModule
-import kr.co.portfolio.dagger.module.ViewModelFactoryModule
-import kr.co.portfolio.dagger.module.ViewModelModule
+import kr.co.portfolio.dagger.module.*
 import kr.co.portfolio.ui.SampleApp
 import javax.inject.Singleton
 
@@ -39,7 +36,9 @@ import javax.inject.Singleton
     ActivityBindingModule::class,
     RetrofitModule::class,
     ViewModelModule::class,
-    ViewModelFactoryModule::class
+    ViewModelFactoryModule::class,
+    CoroutinesModule::class,
+    RepositoryModule::class
 ])
 interface AppComponent {
 

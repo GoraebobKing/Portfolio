@@ -3,11 +3,14 @@ package kr.co.portfolio.dagger.module
 import dagger.Binds
 import dagger.Module
 import dagger.android.AndroidInjector
+import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.ClassKey
 import dagger.multibindings.IntoMap
 import kr.co.portfolio.dagger.component.AnotherComponent
+import kr.co.portfolio.dagger.component.CoroutineComponent
 import kr.co.portfolio.dagger.component.DaggerComponent
 import kr.co.portfolio.ui.activity.AnotherActivity
+import kr.co.portfolio.ui.activity.CoroutineActivity
 import kr.co.portfolio.ui.activity.DaggerActivity
 
 /**
@@ -17,10 +20,13 @@ import kr.co.portfolio.ui.activity.DaggerActivity
  **/
 @Module(subcomponents = [
     DaggerComponent::class,
-    AnotherComponent::class
+    AnotherComponent::class,
+    CoroutineComponent::class
 ])
 abstract class ActivityBindingModule {
 
+//    @ContributesAndroidInjector(modules = [FragmentBuilderModule::class])
+//    abstract fun contributesDetailsActivity(): DetailsActivity
     @Binds
     @IntoMap
     @ClassKey(DaggerActivity::class)
@@ -30,4 +36,9 @@ abstract class ActivityBindingModule {
     @IntoMap
     @ClassKey(AnotherActivity::class)
     abstract fun bindAnotherInjectorFactory(factory: AnotherComponent.Factory) : AndroidInjector.Factory<*>
+
+    @Binds
+    @IntoMap
+    @ClassKey(CoroutineActivity::class)
+    abstract fun bindCoroutineInjectorFactory(factory: CoroutineComponent.Factory) : AndroidInjector.Factory<*>
 }
