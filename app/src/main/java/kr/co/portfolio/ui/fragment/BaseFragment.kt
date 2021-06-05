@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
@@ -13,10 +14,11 @@ import androidx.fragment.app.Fragment
  **/
 abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
 
+    @LayoutRes
     abstract fun getLayoutResId() : Int
-    abstract fun getBackFlag() : Boolean
-    abstract fun backKeyUser()
     abstract fun viewInit()
+
+    open fun initObserver(){}
 
     lateinit var binding : T
 

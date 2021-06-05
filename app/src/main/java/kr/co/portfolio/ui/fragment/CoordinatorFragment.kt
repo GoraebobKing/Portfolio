@@ -14,10 +14,6 @@ class CoordinatorFragment : BaseFragment<FragmentCoordinatorBinding>(){
 
     override fun getLayoutResId() = R.layout.fragment_coordinator
 
-    override fun getBackFlag() = false
-
-    override fun backKeyUser() {}
-
     override fun viewInit() {
 
         binding.webView.loadUrl("https://m.naver.com/")
@@ -29,6 +25,8 @@ class CoordinatorFragment : BaseFragment<FragmentCoordinatorBinding>(){
             binding.moveView.moveBarShow(scrollPosition.toFloat())
         }
     }
+
+
 
 
 }

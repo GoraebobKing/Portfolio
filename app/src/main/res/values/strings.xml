@@ -3,8 +3,8 @@
 
     <string name="bottom_menu_1">모션레이아웃</string>
     <string name="bottom_menu_2">코디네이터</string>
-    <string name="bottom_menu_3">커스텀뷰</string>
-    <string name="bottom_menu_4">RX연습</string>
+    <string name="bottom_menu_3">아직x</string>
+    <string name="bottom_menu_4">아직x</string>
 
     <string-array name="tel">
         <item>010</item>
