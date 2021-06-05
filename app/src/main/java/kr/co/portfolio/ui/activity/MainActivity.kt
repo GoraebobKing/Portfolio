@@ -13,7 +13,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, BaseViewModel>() {
     override fun getModelId() = BaseViewModel::class.java
 
     override fun initView() {
-
+        binding.view = this
     }
 
     fun goToTabFragment(){

@@ -32,7 +32,15 @@ abstract class BaseActivity<T : ViewDataBinding, U : BaseViewModel> : FragmentAc
         AndroidInjection.inject(this)
 
         binding = DataBindingUtil.setContentView(this, getLayoutResId())
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(getModelId())
+
+        when(getModelId()){
+
+            BaseViewModel::class.java -> { }
+
+            else -> {
+                viewModel = ViewModelProviders.of(this, viewModelFactory).get(getModelId())
+            }
+        }
 
         initView()
     }

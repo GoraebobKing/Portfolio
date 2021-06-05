@@ -7,6 +7,7 @@ import dagger.multibindings.IntoMap
 import kr.co.portfolio.viewmodel.AnotherViewModel
 import kr.co.portfolio.viewmodel.DaggerViewModel
 import kr.co.portfolio.dagger.anno.ViewModelKey
+import kr.co.portfolio.viewmodel.BaseViewModel
 import kr.co.portfolio.viewmodel.CoroutineViewModel
 
 /**

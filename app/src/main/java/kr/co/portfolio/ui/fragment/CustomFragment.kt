@@ -10,8 +10,6 @@ import java.util.*
 class CustomFragment : BaseFragment<FragmentCustomBinding>() {
 
     override fun getLayoutResId() = R.layout.fragment_custom
-    override fun getBackFlag() = false
-    override fun backKeyUser() {}
 
     override fun viewInit() {
         binding.fragment = this

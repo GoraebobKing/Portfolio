@@ -3,15 +3,16 @@ package kr.co.portfolio.dagger.module
 import dagger.Binds
 import dagger.Module
 import dagger.android.AndroidInjector
-import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.ClassKey
 import dagger.multibindings.IntoMap
 import kr.co.portfolio.dagger.component.AnotherComponent
-import kr.co.portfolio.dagger.component.CoroutineComponent
 import kr.co.portfolio.dagger.component.DaggerComponent
+import kr.co.portfolio.dagger.component.MainComponent
+import kr.co.portfolio.dagger.component.TabComponent
 import kr.co.portfolio.ui.activity.AnotherActivity
-import kr.co.portfolio.ui.activity.CoroutineActivity
 import kr.co.portfolio.ui.activity.DaggerActivity
+import kr.co.portfolio.ui.activity.MainActivity
+import kr.co.portfolio.ui.activity.TabActivity
 
 /**
  * Created by kwon on 2020/10/12
@@ -19,14 +20,26 @@ import kr.co.portfolio.ui.activity.DaggerActivity
  * IntoMap : 멀티 바인딩에서 사용하면서 키값을 가지고 체크
  **/
 @Module(subcomponents = [
-    DaggerComponent::class,
+    TabComponent::class,
+    MainComponent::class,
     AnotherComponent::class,
-    CoroutineComponent::class
+    DaggerComponent::class,
 ])
 abstract class ActivityBindingModule {
 
 //    @ContributesAndroidInjector(modules = [FragmentBuilderModule::class])
 //    abstract fun contributesDetailsActivity(): DetailsActivity
+
+    @Binds
+    @IntoMap
+    @ClassKey(MainActivity::class)
+    abstract fun bindMainInjectorFactory(factory: MainComponent.Factory) : AndroidInjector.Factory<*>
+
+    @Binds
+    @IntoMap
+    @ClassKey(TabActivity::class)
+    abstract fun bindTabInjectorFactory(factory: TabComponent.Factory) : AndroidInjector.Factory<*>
+
     @Binds
     @IntoMap
     @ClassKey(DaggerActivity::class)
@@ -36,9 +49,4 @@ abstract class ActivityBindingModule {
     @IntoMap
     @ClassKey(AnotherActivity::class)
     abstract fun bindAnotherInjectorFactory(factory: AnotherComponent.Factory) : AndroidInjector.Factory<*>
-
-    @Binds
-    @IntoMap
-    @ClassKey(CoroutineActivity::class)
-    abstract fun bindCoroutineInjectorFactory(factory: CoroutineComponent.Factory) : AndroidInjector.Factory<*>
 }

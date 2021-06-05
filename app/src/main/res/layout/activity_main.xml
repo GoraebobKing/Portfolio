@@ -29,17 +29,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:text="탭구조 액티비티" />
-
-                <Button
-                    android:id="@+id/btnCustomUi"
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="20dp"
-                    app:layout_constraintTop_toBottomOf="@id/btnTab"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:text="커스텀 UI 액티비티" />
+                    android:text="탭구조 액티비티"/>
 
                 <Button
                     android:id="@+id/btnNetwork"
@@ -50,6 +40,16 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:text="네트워크 관련 액티비티" />
+
+                <Button
+                    android:id="@+id/btnCustomUi"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/btnTab"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:text="커스텀 UI 액티비티" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
