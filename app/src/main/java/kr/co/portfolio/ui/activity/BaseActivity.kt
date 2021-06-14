@@ -20,6 +20,9 @@ abstract class BaseActivity<T : ViewDataBinding, U : BaseViewModel> : FragmentAc
     abstract fun getLayoutResId(): Int             //레이아웃 지정
     abstract fun getModelId(): Class<U>            //뷰모델 지정
     abstract fun initView()
+
+    open fun initObserve(){}
+
     lateinit var binding : T
     lateinit var viewModel : U
 
@@ -43,6 +46,7 @@ abstract class BaseActivity<T : ViewDataBinding, U : BaseViewModel> : FragmentAc
         }
 
         initView()
+        initObserve()
     }
 
 

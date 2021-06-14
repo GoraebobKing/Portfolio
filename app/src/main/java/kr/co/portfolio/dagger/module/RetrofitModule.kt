@@ -6,6 +6,8 @@ import dagger.Module
 import dagger.Provides
 import kr.co.portfolio.BuildConfig
 import kr.co.portfolio.network.GithubApi
+import kr.co.portfolio.network.module.CallNetworkFactory
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
@@ -28,20 +30,37 @@ class RetrofitModule {
             .baseUrl(BuildConfig.BASE_URL)
 //            .baseUrl("https://api.github.com/")
             .addConverterFactory(factory)
+            .addCallAdapterFactory(CallNetworkFactory())
             .client(okHttpClient)
             .build()
             .create(GithubApi::class.java)
     }
 
+
+
     @Provides
-    fun provideOkhttpClient(interceptor: HttpLoggingInterceptor) : OkHttpClient {
-        return OkHttpClient.Builder().addInterceptor(interceptor).build()
+    fun provideOkhttpClient(interceptor: HttpLoggingInterceptor, headerInterceptor : Interceptor) : OkHttpClient {
+        return OkHttpClient.Builder()
+            .addInterceptor(interceptor)
+            .addInterceptor(headerInterceptor)
+            .build()
     }
 
     @Provides
     @Singleton
     fun provideLoggingInterceptor() : HttpLoggingInterceptor {
         return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+    }
+
+    @Provides
+    @Singleton
+    fun provideHeaderInterceptor() : Interceptor {
+        return Interceptor { chain ->
+            val request = chain.request().newBuilder()
+                .addHeader("deviceType", "android")
+                .build()
+            chain.proceed(request)
+        }
     }
 
     @Provides

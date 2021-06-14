@@ -23,7 +23,7 @@ class RetroCallback<T>(network : Call<T>) : CallNetworkResponse<T, NetworkRespon
             }
 
             override fun onFailure(call: Call<T>, t: Throwable) {
-                returnCall.onResponse(this@RetroCallback, Response.success(NetworkResponse.Error(500, t.localizedMessage?:"")))
+                returnCall.onResponse(this@RetroCallback, Response.success(NetworkResponse.Error(500, t.toString())))
             }
         })
     }

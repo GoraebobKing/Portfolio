@@ -1,11 +1,11 @@
 package kr.co.portfolio.network
 
 import kr.co.portfolio.const.URLs
-import kr.co.portfolio.data.ResultData
 import kr.co.portfolio.data.User
 import kr.co.portfolio.network.module.NetworkResponse
 import retrofit2.Call
 import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 
@@ -24,5 +24,6 @@ interface GithubApi {
     suspend fun getRepoUsers() : List<User>
 
     @POST(URLs.introCheck)
-    suspend fun versionCheck(map : HashMap<String, Any>) : NetworkResponse<String>
+    suspend fun versionCheck(
+        @Body map : HashMap<String, Any>) : NetworkResponse<String>
 }
