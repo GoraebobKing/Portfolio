@@ -21,12 +21,14 @@ android {
     buildTypes {
         release {
             buildConfigField "boolean", 'IS_DEBUG', 'false'
+            buildConfigField "String", "BASE_URL", "\"https://www.happyhabit.co.kr/\""
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
         debug {
             buildConfigField "boolean", 'IS_DEBUG', 'true'
+            buildConfigField "String", "BASE_URL", "\"https://www.happyhabit.co.kr/\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }

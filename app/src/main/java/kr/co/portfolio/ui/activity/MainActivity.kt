@@ -1,5 +1,6 @@
 package kr.co.portfolio.ui.activity
 
+import android.content.Intent
 import kr.co.portfolio.R
 import kr.co.portfolio.databinding.ActivityMainBinding
 
@@ -18,5 +19,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, BaseViewModel>() {
 
     fun goToTabFragment(){
 
+    }
+
+    fun goToNetworkFragment(){
+
+        Intent(this, NetworkActivity::class.java).apply {
+            startActivity(this)
+        }
     }
 }

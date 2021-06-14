@@ -39,7 +39,8 @@
                     app:layout_constraintTop_toBottomOf="@id/btnCustomUi"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:text="네트워크 관련 액티비티" />
+                    android:text="네트워크 관련 액티비티"
+                    android:onClick="@{(v) -> view.goToNetworkFragment()}"/>
 
                 <Button
                     android:id="@+id/btnCustomUi"
@@ -50,6 +51,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:text="커스텀 UI 액티비티" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

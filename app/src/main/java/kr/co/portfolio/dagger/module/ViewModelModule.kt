@@ -4,11 +4,8 @@ import androidx.lifecycle.ViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
-import kr.co.portfolio.viewmodel.AnotherViewModel
-import kr.co.portfolio.viewmodel.DaggerViewModel
 import kr.co.portfolio.dagger.anno.ViewModelKey
-import kr.co.portfolio.viewmodel.BaseViewModel
-import kr.co.portfolio.viewmodel.CoroutineViewModel
+import kr.co.portfolio.viewmodel.*
 
 /**
  * Created by kwon on 2020/10/13
@@ -38,4 +35,10 @@ class ViewModelModule {
         return coroutineViewModel
     }
 
+    @Provides
+    @IntoMap
+    @ViewModelKey(NetworkViewModel::class)
+    fun provideNetworkViewModel(networkViewModel: NetworkViewModel) : ViewModel{
+        return networkViewModel
+    }
 }

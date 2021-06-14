@@ -5,14 +5,8 @@ import dagger.Module
 import dagger.android.AndroidInjector
 import dagger.multibindings.ClassKey
 import dagger.multibindings.IntoMap
-import kr.co.portfolio.dagger.component.AnotherComponent
-import kr.co.portfolio.dagger.component.DaggerComponent
-import kr.co.portfolio.dagger.component.MainComponent
-import kr.co.portfolio.dagger.component.TabComponent
-import kr.co.portfolio.ui.activity.AnotherActivity
-import kr.co.portfolio.ui.activity.DaggerActivity
-import kr.co.portfolio.ui.activity.MainActivity
-import kr.co.portfolio.ui.activity.TabActivity
+import kr.co.portfolio.dagger.component.*
+import kr.co.portfolio.ui.activity.*
 
 /**
  * Created by kwon on 2020/10/12
@@ -24,6 +18,7 @@ import kr.co.portfolio.ui.activity.TabActivity
     MainComponent::class,
     AnotherComponent::class,
     DaggerComponent::class,
+    NetworkComponent::class
 ])
 abstract class ActivityBindingModule {
 
@@ -49,4 +44,9 @@ abstract class ActivityBindingModule {
     @IntoMap
     @ClassKey(AnotherActivity::class)
     abstract fun bindAnotherInjectorFactory(factory: AnotherComponent.Factory) : AndroidInjector.Factory<*>
+
+    @Binds
+    @IntoMap
+    @ClassKey(NetworkActivity::class)
+    abstract fun bindNetworkInjectorFactory(factory: NetworkComponent.Factory) : AndroidInjector.Factory<*>
 }

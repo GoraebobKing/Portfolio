@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import dagger.Module
 import dagger.Provides
+import kr.co.portfolio.BuildConfig
 import kr.co.portfolio.network.GithubApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -24,7 +25,8 @@ class RetrofitModule {
     fun provideGithubApi(context: Context, okHttpClient: OkHttpClient, factory : Converter.Factory) : GithubApi {
         Log.e("provideGithubApi","co $context")
         return Retrofit.Builder()
-            .baseUrl("https://api.github.com/")
+            .baseUrl(BuildConfig.BASE_URL)
+//            .baseUrl("https://api.github.com/")
             .addConverterFactory(factory)
             .client(okHttpClient)
             .build()
