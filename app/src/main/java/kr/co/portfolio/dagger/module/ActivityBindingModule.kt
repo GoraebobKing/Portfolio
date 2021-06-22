@@ -18,7 +18,8 @@ import kr.co.portfolio.ui.activity.*
     MainComponent::class,
     AnotherComponent::class,
     DaggerComponent::class,
-    NetworkComponent::class
+    NetworkComponent::class,
+    ItemTabComponent::class
 ])
 abstract class ActivityBindingModule {
 
@@ -49,4 +50,10 @@ abstract class ActivityBindingModule {
     @IntoMap
     @ClassKey(NetworkActivity::class)
     abstract fun bindNetworkInjectorFactory(factory: NetworkComponent.Factory) : AndroidInjector.Factory<*>
+
+
+    @Binds
+    @IntoMap
+    @ClassKey(ItemTabActivity::class)
+    abstract fun bindItemTabInjectorFactory(factory: ItemTabComponent.Factory) : AndroidInjector.Factory<*>
 }

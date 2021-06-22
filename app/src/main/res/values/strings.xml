@@ -3,8 +3,14 @@
 
     <string name="bottom_menu_1">모션레이아웃</string>
     <string name="bottom_menu_2">코디네이터</string>
-    <string name="bottom_menu_3">아직x</string>
-    <string name="bottom_menu_4">아직x</string>
+    <string name="bottom_menu_3">Recents</string>
+    <string name="bottom_menu_4">Favorites</string>
+    <string name="bottom_menu_5">Nearby</string>
+
+    <string name="tool_menu_1">자동저장 삭제</string>
+    <string name="tool_menu_2">자동저장 ON</string>
+
+    <string name="tool_menu_icon_search">검색</string>
 
     <string-array name="tel">
         <item>010</item>

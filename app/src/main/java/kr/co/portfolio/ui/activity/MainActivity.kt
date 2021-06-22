@@ -21,9 +21,16 @@ class MainActivity : BaseActivity<ActivityMainBinding, BaseViewModel>() {
 
     }
 
-    fun goToNetworkFragment(){
+    fun goToNetworkActivity(){
 
         Intent(this, NetworkActivity::class.java).apply {
+            startActivity(this)
+        }
+    }
+
+    fun goToItemActivity(){
+
+        Intent(this, ItemTabActivity::class.java).apply {
             startActivity(this)
         }
     }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="@string/tool_menu_1"
+        android:id="@+id/tool_item_1"
+        app:showAsAction="never"/>
+
+    <item
+        android:title="@string/tool_menu_2"
+        android:id="@+id/tool_item_2"
+        app:showAsAction="never"/>
+
+    <item
+        android:title="@string/tool_menu_icon_search"
+        android:id="@+id/tool_item_3"
+        android:icon="@drawable/ic_tab_reservation_off"
+        app:showAsAction="ifRoom" />
+
+
+
+</menu>

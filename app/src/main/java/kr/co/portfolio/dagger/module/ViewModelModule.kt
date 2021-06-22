@@ -41,4 +41,12 @@ class ViewModelModule {
     fun provideNetworkViewModel(networkViewModel: NetworkViewModel) : ViewModel{
         return networkViewModel
     }
+
+
+    @Provides
+    @IntoMap
+    @ViewModelKey(ItemViewModel::class)
+    fun provideItemViewModel(itemViewModel: ItemViewModel) : ViewModel{
+        return itemViewModel
+    }
 }

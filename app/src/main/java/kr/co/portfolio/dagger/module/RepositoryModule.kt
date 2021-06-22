@@ -5,7 +5,7 @@ import dagger.Provides
 import kotlinx.coroutines.CoroutineDispatcher
 import kr.co.portfolio.dagger.anno.IoDispatcher
 import kr.co.portfolio.dagger.remote.RemoteDataSourceImpl
-import kr.co.portfolio.dagger.remote.network.NetworkDataSource
+import kr.co.portfolio.dagger.remote.item.ItemDataSourceImpl
 import kr.co.portfolio.dagger.remote.network.NetworkDataSourceImpl
 import kr.co.portfolio.dagger.repo.RepositoryImpl
 import kr.co.portfolio.network.GithubApi
@@ -33,5 +33,15 @@ class RepositoryModule {
         api: GithubApi
     ): NetworkDataSourceImpl {
         return NetworkDataSourceImpl(api, ioDispatcher)
+    }
+
+
+
+    @Provides
+    fun provideItemRepository(
+        @IoDispatcher ioDispatcher: CoroutineDispatcher,
+        api: GithubApi
+    ): ItemDataSourceImpl {
+        return ItemDataSourceImpl(api, ioDispatcher)
     }
 }

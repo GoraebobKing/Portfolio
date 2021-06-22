@@ -27,8 +27,10 @@ class RetrofitModule {
     fun provideGithubApi(context: Context, okHttpClient: OkHttpClient, factory : Converter.Factory) : GithubApi {
         Log.e("provideGithubApi","co $context")
         return Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL)
-//            .baseUrl("https://api.github.com/")
+//            .baseUrl(BuildConfig.BASE_URL)
+////            .baseUrl("https://api.github.com/")
+//            .baseUrl("https://1ec3b1b2-53d5-4a40-b0c7-452870a2e360.mock.pstmn.io")
+            .baseUrl("https://fakestoreapi.com/")
             .addConverterFactory(factory)
             .addCallAdapterFactory(CallNetworkFactory())
             .client(okHttpClient)

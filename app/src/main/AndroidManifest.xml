@@ -33,6 +33,9 @@
         <activity
             android:name=".ui.activity.NetworkActivity" />
 
+        <activity
+            android:name=".ui.activity.ItemTabActivity" />
+
 
     </application>
 
