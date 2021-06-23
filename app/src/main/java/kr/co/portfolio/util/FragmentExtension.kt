@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import kr.co.portfolio.R
 
 /**
  * Created by kwon on 2021/06/05
@@ -82,8 +83,10 @@ object FragmentExtension {
                 }
             }
 
+            fragment.arguments = extras
+
             if(!isFragmentAdd){
-                fragment.arguments = extras
+                ft.add(R.id.frameLayer, fragment)
             }
 
             ft.commitAllowingStateLoss()

@@ -19,23 +19,23 @@ class NetworkActivity : BaseActivity<ActivityNetworkBinding, NetworkViewModel>()
     }
 
     override fun initObserve() {
-        viewModel.networkResult.observe(this, {
-
-            when(it.first){
-
-                NetworkViewModel.NetworkNavigator.NETWORK_SUCCESS -> {
-                    Toast.makeText(this, it.second, Toast.LENGTH_SHORT).show()
-                }
-
-                NetworkViewModel.NetworkNavigator.NETWORK_ERROR -> {
-                    Toast.makeText(this, it.second, Toast.LENGTH_SHORT).show()
-                }
-            }
-        })
+//        viewModel.networkResult.observe(this, {
+//
+//            when(it.first){
+//
+//                NetworkViewModel.NetworkNavigator.NETWORK_SUCCESS -> {
+//                    Toast.makeText(this, it.second, Toast.LENGTH_SHORT).show()
+//                }
+//
+//                NetworkViewModel.NetworkNavigator.NETWORK_ERROR -> {
+//                    Toast.makeText(this, it.second, Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//        })
     }
 
 
     fun networkCall(){
-        viewModel.versionCheck()
+//        viewModel.versionCheck()
     }
 }

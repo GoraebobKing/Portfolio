@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProviders
 import dagger.android.AndroidInjection
 import kr.co.portfolio.viewmodel.BaseViewModel
-import kr.co.portfolio.dagger.anno.ViewModelFactory
 import javax.inject.Inject
 
 /**
@@ -26,24 +25,24 @@ abstract class BaseActivity<T : ViewDataBinding, U : BaseViewModel> : FragmentAc
     lateinit var binding : T
     lateinit var viewModel : U
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
+//    @Inject
+//    lateinit var viewModelFactory: ViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        AndroidInjection.inject(this)
+//        AndroidInjection.inject(this)
 
         binding = DataBindingUtil.setContentView(this, getLayoutResId())
 
-        when(getModelId()){
-
-            BaseViewModel::class.java -> { }
-
-            else -> {
-                viewModel = ViewModelProviders.of(this, viewModelFactory).get(getModelId())
-            }
-        }
+//        when(getModelId()){
+//
+//            BaseViewModel::class.java -> { }
+//
+//            else -> {
+//                viewModel = ViewModelProviders.of(this, viewModelFactory).get(getModelId())
+//            }
+//        }
 
         initView()
         initObserve()

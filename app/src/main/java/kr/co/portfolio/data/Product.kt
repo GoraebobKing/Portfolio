@@ -14,7 +14,7 @@ data class Product(
     private var title : String? = null,
     @SerializedName("price")
     private var price : Double = 0.0,
-    @SerializedName("price")
+    @SerializedName("description")
     private var description : String? = null,
     @SerializedName("category")
     private var category : String? = null,

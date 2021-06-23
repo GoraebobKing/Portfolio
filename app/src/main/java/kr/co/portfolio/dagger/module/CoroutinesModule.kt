@@ -11,21 +11,18 @@ import kr.co.portfolio.dagger.anno.MainDispatcher
 /**
  * Created by kwon on 2020/10/15
  **/
-@Module
-object CoroutinesModule{
-
-    @DefaultDispatcher
-    @JvmStatic
-    @Provides
-    fun providesDefaultDispatcher(): CoroutineDispatcher = Dispatchers.Default
-
-    @IoDispatcher
-    @JvmStatic
-    @Provides
-    fun providesIoDispatcher(): CoroutineDispatcher = Dispatchers.IO
-
-    @MainDispatcher
-    @JvmStatic
-    @Provides
-    fun providesMainDispatcher(): CoroutineDispatcher = Dispatchers.Main
-}
+//@Module
+//object CoroutinesModule{
+//
+//    @DefaultDispatcher
+//    @Provides
+//    fun providesDefaultDispatcher(): CoroutineDispatcher = Dispatchers.Default
+//
+//    @IoDispatcher
+//    @Provides
+//    fun providesIoDispatcher(): CoroutineDispatcher = Dispatchers.IO
+//
+//    @MainDispatcher
+//    @Provides
+//    fun providesMainDispatcher(): CoroutineDispatcher = Dispatchers.Main
+//}

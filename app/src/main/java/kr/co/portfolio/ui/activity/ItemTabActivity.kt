@@ -18,6 +18,7 @@ class ItemTabActivity : BaseActivity<ActivityItemTabBinding, ItemViewModel>(), B
     override fun initView() {
         binding.bottomNavi.setOnNavigationItemSelectedListener(this@ItemTabActivity)
         binding.bottomNavi.selectedItemId = R.id.menu_item_1
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

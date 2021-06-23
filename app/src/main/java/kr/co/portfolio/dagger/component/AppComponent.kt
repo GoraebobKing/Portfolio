@@ -30,22 +30,22 @@ import javax.inject.Singleton
  * ViewModelFactoryModule : 뷰모델 사용시 보일러코드를 줄이기 위해 사용한 모듈
  **/
 
-@Singleton
-@Component(modules = [
-    AndroidInjectionModule::class,
-    ActivityBindingModule::class,
-    RetrofitModule::class,
-    ViewModelModule::class,
-    ViewModelFactoryModule::class,
-    CoroutinesModule::class,
-    RepositoryModule::class
-])
-interface AppComponent {
-
-    @Component.Factory
-    interface Factory {
-        fun create(@BindsInstance context: Context) : AppComponent
-    }
-
-    fun inject(sampleApp: SampleApp)
-}
+//@Singleton
+//@Component(modules = [
+//    AndroidInjectionModule::class,
+//    ActivityBindingModule::class,
+//    RetrofitModule::class,
+//    ViewModelModule::class,
+//    ViewModelFactoryModule::class,
+//    CoroutinesModule::class,
+//    RepositoryModule::class
+//])
+//interface AppComponent {
+//
+//    @Component.Factory
+//    interface Factory {
+//        fun create(@BindsInstance context: Context) : AppComponent
+//    }
+//
+//    fun inject(sampleApp: SampleApp)
+//}

@@ -10,7 +10,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import kr.co.portfolio.BR
-import kr.co.portfolio.dagger.anno.ViewModelFactory
+//import kr.co.portfolio.dagger.anno.ViewModelFactory
 import kr.co.portfolio.viewmodel.BaseViewModel
 import javax.inject.Inject
 
@@ -29,8 +29,8 @@ abstract class BaseFragment<T : ViewDataBinding, U : BaseViewModel> : Fragment()
     lateinit var binding : T
     lateinit var viewModel : U
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
+//    @Inject
+//    lateinit var viewModelFactory: ViewModelFactory
 
     var mView : View? = null
 
@@ -40,17 +40,17 @@ abstract class BaseFragment<T : ViewDataBinding, U : BaseViewModel> : Fragment()
             binding = DataBindingUtil.inflate(inflater, getLayoutResId(), container, false)
             binding.lifecycleOwner = this
 
-            when(getModelId()){
-
-                BaseViewModel::class.java -> { }
-
-                else -> {
-                    viewModel = ViewModelProviders.of(this, viewModelFactory).get(getModelId())
-                }
-            }
-
-            binding.setVariable(BR.view, binding)
-            binding.setVariable(BR.vm, viewModel)
+//            when(getModelId()){
+//
+//                BaseViewModel::class.java -> { }
+//
+//                else -> {
+//                    viewModel = ViewModelProviders.of(this, viewModelFactory).get(getModelId())
+//                }
+//            }
+//
+//            binding.setVariable(BR.view, binding)
+//            binding.setVariable(BR.vm, viewModel)
 
             viewInit()
 
