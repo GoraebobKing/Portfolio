@@ -12,32 +12,40 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:menu="@menu/menu_toolbar">
+            app:liftOnScroll="true">
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/etSearch"
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"/>
+                android:layout_height="55dp"
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                app:title="Test"
+                app:menu="@menu/menu_toolbar"
+                app:navigationIcon="@drawable/ic_menu">
 
-        </com.google.android.material.appbar.MaterialToolbar>
+            </com.google.android.material.appbar.MaterialToolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/frameLayer"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintTop_toBottomOf="@id/appBar"
             app:layout_constraintBottom_toTopOf="@id/bottomNavi"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintTop_toBottomOf="@id/appBar"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView

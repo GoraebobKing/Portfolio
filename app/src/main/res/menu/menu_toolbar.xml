@@ -14,7 +14,7 @@
     <item
         android:title="@string/tool_menu_icon_search"
         android:id="@+id/tool_item_3"
-        android:icon="@drawable/ic_tab_reservation_off"
+        android:icon="@drawable/ic_search"
         app:showAsAction="ifRoom" />
 
 
