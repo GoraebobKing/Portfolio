@@ -1,0 +1,66 @@
+package kr.co.portfolio.di
+
+import android.content.Context
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import kr.co.portfolio.network.GithubApi
+import kr.co.portfolio.network.module.CallNetworkFactory
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Converter
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
+
+/**
+ * Created by kwon on 2021/06/23
+ **/
+@Module
+@InstallIn(SingletonComponent::class)
+object NetworkModule {
+
+    fun provideGithubApi(okHttpClient: OkHttpClient, factory : Converter.Factory) : GithubApi {
+        return Retrofit.Builder()
+            .baseUrl("https://fakestoreapi.com/")
+            .addConverterFactory(factory)
+            .addCallAdapterFactory(CallNetworkFactory())
+            .client(okHttpClient)
+            .build()
+            .create(GithubApi::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideOkhttpClient(interceptor: HttpLoggingInterceptor, headerInterceptor : Interceptor) : OkHttpClient {
+        return OkHttpClient.Builder()
+            .addInterceptor(interceptor)
+            .addInterceptor(headerInterceptor)
+            .build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideLoggingInterceptor() : HttpLoggingInterceptor {
+        return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+    }
+
+    @Singleton
+    @Provides
+    fun provideHeaderInterceptor() : Interceptor {
+        return Interceptor { chain ->
+            val request = chain.request().newBuilder()
+                .addHeader("deviceType", "android")
+                .build()
+            chain.proceed(request)
+        }
+    }
+
+    @Singleton
+    @Provides
+    fun provideConverterFactory() : Converter.Factory {
+        return GsonConverterFactory.create()
+    }
+}

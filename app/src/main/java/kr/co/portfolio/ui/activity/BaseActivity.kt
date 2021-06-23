@@ -13,17 +13,15 @@ import javax.inject.Inject
 /**
  * Created by kwon on 2020/09/24
  **/
-abstract class BaseActivity<T : ViewDataBinding, U : BaseViewModel> : FragmentActivity() {
+abstract class BaseActivity<T : ViewDataBinding> : FragmentActivity() {
 
     @LayoutRes
     abstract fun getLayoutResId(): Int             //레이아웃 지정
-    abstract fun getModelId(): Class<U>            //뷰모델 지정
     abstract fun initView()
 
     open fun initObserve(){}
 
     lateinit var binding : T
-    lateinit var viewModel : U
 
 //    @Inject
 //    lateinit var viewModelFactory: ViewModelFactory

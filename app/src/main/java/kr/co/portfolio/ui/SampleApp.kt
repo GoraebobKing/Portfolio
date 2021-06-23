@@ -1,11 +1,7 @@
 package kr.co.portfolio.ui
 
 import android.app.Application
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
-//import kr.co.portfolio.dagger.component.DaggerAppComponent
-import javax.inject.Inject
+import dagger.hilt.android.HiltAndroidApp
 
 /**
  * Created by kwon on 2020/09/24
@@ -27,6 +23,7 @@ import javax.inject.Inject
 //
 //}
 
+@HiltAndroidApp
 class SampleApp : Application(){
 
 }

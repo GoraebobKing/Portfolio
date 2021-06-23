@@ -8,11 +8,9 @@ import kr.co.portfolio.viewmodel.NetworkViewModel
 /**
  * Created by kwon on 2021/06/12
  **/
-class NetworkActivity : BaseActivity<ActivityNetworkBinding, NetworkViewModel>() {
+class NetworkActivity : BaseActivity<ActivityNetworkBinding>() {
 
     override fun getLayoutResId() = R.layout.activity_network
-
-    override fun getModelId() = NetworkViewModel::class.java
 
     override fun initView() {
         binding.view = this

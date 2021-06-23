@@ -1,12 +1,7 @@
 package kr.co.portfolio.viewmodel
 
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.launch
-//import kr.co.portfolio.dagger.remote.item.ItemDataSourceImpl
-import kr.co.portfolio.data.Product
-import kr.co.portfolio.util.Logger
+import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 //class ItemViewModel @Inject constructor(private val itemImpl: ItemDataSourceImpl) : BaseViewModel() {
@@ -44,6 +39,7 @@ import javax.inject.Inject
 //    }
 //}
 
-class ItemViewModel : BaseViewModel() {
+@HiltViewModel
+class ItemViewModel @Inject constructor(): BaseViewModel() {
 
 }

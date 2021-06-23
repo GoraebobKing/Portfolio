@@ -1,17 +1,21 @@
 package kr.co.portfolio.ui.activity
 
 import android.view.MenuItem
+import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 import kr.co.portfolio.R
 import kr.co.portfolio.databinding.ActivityItemTabBinding
 import kr.co.portfolio.ui.fragment.*
 import kr.co.portfolio.util.FragmentExtension.hideAndShowFragment
 import kr.co.portfolio.viewmodel.ItemViewModel
 
-class ItemTabActivity : BaseActivity<ActivityItemTabBinding, ItemViewModel>(), BottomNavigationView.OnNavigationItemSelectedListener {
+@AndroidEntryPoint
+class ItemTabActivity : BaseActivity<ActivityItemTabBinding>(), BottomNavigationView.OnNavigationItemSelectedListener {
 
     override fun getLayoutResId() = R.layout.activity_item_tab
-    override fun getModelId() = ItemViewModel::class.java
+
+    private val itemViewModel : ItemViewModel by viewModels()
 
     private var itemFragment : ItemFragment?= null
 

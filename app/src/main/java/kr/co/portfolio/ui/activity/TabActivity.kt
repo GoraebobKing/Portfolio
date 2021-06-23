@@ -12,10 +12,9 @@ import kr.co.portfolio.viewmodel.BaseViewModel
 /**
  * Created by kwon on 2021/06/05
  **/
-class TabActivity : BaseActivity<ActivityTabBinding, BaseViewModel>(), BottomNavigationView.OnNavigationItemSelectedListener {
+class TabActivity : BaseActivity<ActivityTabBinding>(), BottomNavigationView.OnNavigationItemSelectedListener {
 
     override fun getLayoutResId() = R.layout.activity_tab
-    override fun getModelId() = BaseViewModel::class.java
 
     //뭔가 할게 생기면 명칭 변경하여 작업
     private var motionFragment : MotionLayoutFragment? = null

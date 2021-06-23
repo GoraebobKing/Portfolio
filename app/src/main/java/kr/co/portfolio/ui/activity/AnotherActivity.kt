@@ -7,10 +7,9 @@ import kr.co.portfolio.viewmodel.BaseViewModel
 /**
  * Created by kwon on 2020/10/13
  **/
-class AnotherActivity : BaseActivity<ActivityDaggerBinding, BaseViewModel>() {
+class AnotherActivity : BaseActivity<ActivityDaggerBinding>() {
 
     override fun getLayoutResId() = R.layout.activity_another
-    override fun getModelId() = BaseViewModel::class.java
 
     override fun initView() {
 
