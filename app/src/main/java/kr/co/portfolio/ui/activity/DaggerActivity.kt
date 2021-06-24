@@ -8,10 +8,12 @@ import kr.co.portfolio.viewmodel.BaseViewModel
 /**
  * Created by kwon on 2020/09/24
  **/
-class DaggerActivity : BaseActivity<ActivityDaggerBinding>() {
+class DaggerActivity : BaseActivity<ActivityDaggerBinding, BaseViewModel>() {
 
     override fun getLayoutResId() = R.layout.activity_dagger
-
+    override fun getViewModel(): BaseViewModel? {
+        return null
+    }
 //    @Inject
 //    lateinit var githubApi: GithubApi
 

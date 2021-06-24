@@ -3,14 +3,18 @@ package kr.co.portfolio.ui.activity
 import android.widget.Toast
 import kr.co.portfolio.R
 import kr.co.portfolio.databinding.ActivityNetworkBinding
+import kr.co.portfolio.viewmodel.BaseViewModel
 import kr.co.portfolio.viewmodel.NetworkViewModel
 
 /**
  * Created by kwon on 2021/06/12
  **/
-class NetworkActivity : BaseActivity<ActivityNetworkBinding>() {
+class NetworkActivity : BaseActivity<ActivityNetworkBinding, BaseViewModel>() {
 
     override fun getLayoutResId() = R.layout.activity_network
+    override fun getViewModel(): BaseViewModel? {
+        return null
+    }
 
     override fun initView() {
         binding.view = this

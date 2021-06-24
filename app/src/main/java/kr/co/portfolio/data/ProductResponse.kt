@@ -7,17 +7,17 @@ import com.google.gson.annotations.SerializedName
  **/
 
 
-data class Product(
+data class ProductResponse(
     @SerializedName("id")
-    private var id : Int = 0,
+    var id : Int = 0,
     @SerializedName("title")
-    private var title : String? = null,
+    var title : String? = null,
     @SerializedName("price")
-    private var price : Double = 0.0,
+    var price : Double = 0.0,
     @SerializedName("description")
-    private var description : String? = null,
+    var description : String? = null,
     @SerializedName("category")
-    private var category : String? = null,
+    var category : String? = null,
     @SerializedName("image")
-    private var image : String? = null,
+    var image : String? = null
 )

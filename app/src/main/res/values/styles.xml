@@ -17,4 +17,8 @@
         <item name="android:textCursorDrawable">@null</item>
     </style>
 
+    <style name="ThemeOverToolbar" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
+        <item name="android:editTextColor">#000000</item>
+    </style>
+
 </resources>

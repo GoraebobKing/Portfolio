@@ -10,7 +10,7 @@ import kr.co.portfolio.viewmodel.BaseViewModel
 class MotionLayoutFragment : BaseFragment<FragmentMotionBinding, BaseViewModel>(){
 
     override fun getLayoutResId() = R.layout.fragment_motion
-    override fun getModelId() = BaseViewModel::class.java
+    override fun getViewModel() = null
 
     override fun viewInit() {
 

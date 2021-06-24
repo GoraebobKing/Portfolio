@@ -11,7 +11,7 @@ import java.util.*
 class CustomFragment : BaseFragment<FragmentCustomBinding, BaseViewModel>() {
 
     override fun getLayoutResId() = R.layout.fragment_custom
-    override fun getModelId() = BaseViewModel::class.java
+    override fun getViewModel() = null
 
     override fun viewInit() {
         binding.fragment = this

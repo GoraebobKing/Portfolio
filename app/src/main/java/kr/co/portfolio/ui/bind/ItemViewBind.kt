@@ -2,7 +2,8 @@ package kr.co.portfolio.ui.bind
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import kr.co.portfolio.data.Product
+import kr.co.portfolio.data.ProductResponse
+import kr.co.portfolio.ui.adapter.ItemAdapter
 
 object ItemViewBind {
 
@@ -11,11 +12,20 @@ object ItemViewBind {
         "item")
     fun itemDataSetting(
         view : RecyclerView,
-        item : MutableList<Product>
+        item : MutableList<ProductResponse>?
     ){
 
-        item?.let{
-
+        view.adapter?.let {adapter ->
+            item?.let {
+                if(adapter is ItemAdapter){
+                    adapter.setItemList(it)
+                }
+            }
+        }?: run {
+            ItemAdapter().run {
+                view.adapter = this
+            }
         }
+
     }
 }

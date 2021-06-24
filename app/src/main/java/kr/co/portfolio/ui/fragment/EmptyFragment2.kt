@@ -10,7 +10,7 @@ import kr.co.portfolio.viewmodel.BaseViewModel
 class EmptyFragment2 : BaseFragment<FragmentEmpty2Binding, BaseViewModel>(){
 
     override fun getLayoutResId() = R.layout.fragment_empty_2
-    override fun getModelId() = BaseViewModel::class.java
+    override fun getViewModel() = null
 
     override fun viewInit() {
 

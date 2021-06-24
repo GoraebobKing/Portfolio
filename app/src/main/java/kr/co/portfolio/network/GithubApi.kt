@@ -1,7 +1,7 @@
 package kr.co.portfolio.network
 
 import kr.co.portfolio.const.URLs
-import kr.co.portfolio.data.Product
+import kr.co.portfolio.data.ProductResponse
 import kr.co.portfolio.data.User
 import kr.co.portfolio.network.module.NetworkResponse
 import retrofit2.Call
@@ -16,7 +16,7 @@ import retrofit2.http.POST
 interface GithubApi {
 
     @GET("/products")
-    suspend fun getProductList() : NetworkResponse<Array<Product>>
+    suspend fun getProductList() : NetworkResponse<ArrayList<ProductResponse>>
 
 
 

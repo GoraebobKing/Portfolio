@@ -5,21 +5,18 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.ViewModelProviders
-import dagger.android.AndroidInjection
 import kr.co.portfolio.viewmodel.BaseViewModel
-import javax.inject.Inject
+
 
 /**
  * Created by kwon on 2020/09/24
  **/
-abstract class BaseActivity<T : ViewDataBinding> : FragmentActivity() {
+abstract class BaseActivity<T : ViewDataBinding, U : BaseViewModel> : FragmentActivity() {
 
     @LayoutRes
     abstract fun getLayoutResId(): Int             //레이아웃 지정
+    abstract fun getViewModel(): U?
     abstract fun initView()
-
-    open fun initObserve(){}
 
     lateinit var binding : T
 
@@ -45,6 +42,15 @@ abstract class BaseActivity<T : ViewDataBinding> : FragmentActivity() {
         initView()
         initObserve()
     }
+
+    open fun initObserve(){
+
+        getViewModel()?.errorResponse?.observe(this,{
+
+        })
+    }
+
+
 
 
 }

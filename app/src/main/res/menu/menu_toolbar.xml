@@ -15,6 +15,7 @@
         android:title="@string/tool_menu_icon_search"
         android:id="@+id/tool_item_3"
         android:icon="@drawable/ic_search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="ifRoom" />
 
 

@@ -14,7 +14,7 @@ import kr.co.portfolio.viewmodel.BaseViewModel
 class CoordinatorFragment : BaseFragment<FragmentCoordinatorBinding, BaseViewModel>(){
 
     override fun getLayoutResId() = R.layout.fragment_coordinator
-    override fun getModelId() = BaseViewModel::class.java
+    override fun getViewModel() = null
 
     override fun viewInit() {
 

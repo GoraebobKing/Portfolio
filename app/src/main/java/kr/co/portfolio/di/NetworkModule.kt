@@ -18,10 +18,12 @@ import javax.inject.Singleton
 /**
  * Created by kwon on 2021/06/23
  **/
-@Module
+
 @InstallIn(SingletonComponent::class)
+@Module
 object NetworkModule {
 
+    @Provides
     fun provideGithubApi(okHttpClient: OkHttpClient, factory : Converter.Factory) : GithubApi {
         return Retrofit.Builder()
             .baseUrl("https://fakestoreapi.com/")
@@ -34,7 +36,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideOkhttpClient(interceptor: HttpLoggingInterceptor, headerInterceptor : Interceptor) : OkHttpClient {
+    fun provideOkHttpClient(interceptor: HttpLoggingInterceptor, headerInterceptor : Interceptor) : OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(interceptor)
             .addInterceptor(headerInterceptor)

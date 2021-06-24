@@ -20,7 +20,8 @@
             android:layout_height="match_parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:item="@{vm.itemLiveData}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

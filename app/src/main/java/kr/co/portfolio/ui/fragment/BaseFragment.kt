@@ -8,6 +8,7 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProviders
 import kr.co.portfolio.BR
 //import kr.co.portfolio.dagger.anno.ViewModelFactory
@@ -21,16 +22,11 @@ abstract class BaseFragment<T : ViewDataBinding, U : BaseViewModel> : Fragment()
 
     @LayoutRes
     abstract fun getLayoutResId() : Int
-    abstract fun getModelId(): Class<U>
     abstract fun viewInit()
-
-    open fun initObserver(){}
+    abstract fun getViewModel() : U?
 
     lateinit var binding : T
-    lateinit var viewModel : U
 
-//    @Inject
-//    lateinit var viewModelFactory: ViewModelFactory
 
     var mView : View? = null
 
@@ -39,18 +35,6 @@ abstract class BaseFragment<T : ViewDataBinding, U : BaseViewModel> : Fragment()
         if(mView == null){
             binding = DataBindingUtil.inflate(inflater, getLayoutResId(), container, false)
             binding.lifecycleOwner = this
-
-//            when(getModelId()){
-//
-//                BaseViewModel::class.java -> { }
-//
-//                else -> {
-//                    viewModel = ViewModelProviders.of(this, viewModelFactory).get(getModelId())
-//                }
-//            }
-//
-//            binding.setVariable(BR.view, binding)
-//            binding.setVariable(BR.vm, viewModel)
 
             viewInit()
 
@@ -62,5 +46,9 @@ abstract class BaseFragment<T : ViewDataBinding, U : BaseViewModel> : Fragment()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initObserver()
+    }
+
+    open fun initObserver(){
+
     }
 }

@@ -8,10 +8,13 @@ import kr.co.portfolio.databinding.ActivityMainBinding
 import kr.co.portfolio.viewmodel.BaseViewModel
 
 
-@AndroidEntryPoint
-class MainActivity : BaseActivity<ActivityMainBinding>() {
+
+class MainActivity : BaseActivity<ActivityMainBinding, BaseViewModel>() {
 
     override fun getLayoutResId() = R.layout.activity_main
+    override fun getViewModel(): BaseViewModel? {
+        return null
+    }
 
     override fun initView() {
         binding.view = this
