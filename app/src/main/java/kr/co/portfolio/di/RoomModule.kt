@@ -1,6 +1,6 @@
 package kr.co.portfolio.di
 
-import android.app.Application
+import android.content.Context
 import androidx.room.Room
 import dagger.Module
 import dagger.Provides
@@ -18,15 +18,16 @@ import javax.inject.Singleton
 @Module
 object RoomModule {
 
-    @Singleton
     @Provides
-    fun provideDatabase(@ApplicationContext application: Application): DataBaseModule {
-        return Room.databaseBuilder(application, DataBaseModule::class.java, "item")
+    fun provideDatabaseModule(@ApplicationContext context: Context): DataBaseModule {
+        return Room.databaseBuilder(context.applicationContext, DataBaseModule::class.java, "item.db")
             .fallbackToDestructiveMigration()
             .build()
     }
 
-    fun provideDatabaseDao(dao: DataBaseModule): RecentlySearchDao {
+    @Singleton
+    @Provides
+    fun provideRecentlySearchDao(dao: DataBaseModule): RecentlySearchDao {
         return dao.todoDao()
     }
 

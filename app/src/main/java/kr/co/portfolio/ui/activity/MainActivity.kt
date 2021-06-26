@@ -1,12 +1,10 @@
 package kr.co.portfolio.ui.activity
 
 import android.content.Intent
-import dagger.hilt.android.AndroidEntryPoint
 import kr.co.portfolio.R
 import kr.co.portfolio.databinding.ActivityMainBinding
 
 import kr.co.portfolio.viewmodel.BaseViewModel
-
 
 
 class MainActivity : BaseActivity<ActivityMainBinding, BaseViewModel>() {
@@ -23,6 +21,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, BaseViewModel>() {
     fun goToTabFragment(){
 
     }
+
+
 
     fun goToNetworkActivity(){
 

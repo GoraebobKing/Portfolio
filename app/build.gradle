@@ -33,6 +33,13 @@ android {
             buildConfigField "String", "BASE_URL", "\"https://www.happyhabit.co.kr/\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            splits.abi.enable = false
+            splits.density.enable = false
+
+            aaptOptions.cruncherEnabled = false
+
+//            resConfing('en', 'xhdpi')
         }
     }
 
@@ -114,6 +121,10 @@ dependencies {
 
     //viewpager2
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
 //    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
 //    implementation "org.koin:koin-androidx-fragment:$koin_version"

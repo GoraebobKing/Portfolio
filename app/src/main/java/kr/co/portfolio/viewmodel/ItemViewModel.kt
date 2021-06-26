@@ -9,11 +9,13 @@ import kotlinx.coroutines.job
 import kotlinx.coroutines.launch
 import kr.co.portfolio.data.ProductResponse
 import kr.co.portfolio.repository.ItemRepository
+import kr.co.portfolio.room.RecentlySearch
 import javax.inject.Inject
 
 @HiltViewModel
 class ItemViewModel @Inject constructor(private val repo : ItemRepository): BaseViewModel() {
 
+    var searchLiveData = MutableLiveData<MutableList<RecentlySearch>>()
     var itemLiveData = MutableLiveData<MutableList<ProductResponse>>()
 
     override fun onCleared() {

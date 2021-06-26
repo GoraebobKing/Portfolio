@@ -29,7 +29,8 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:text="탭구조 액티비티"/>
+                    android:text="탭구조 액티비티"
+                    android:onClick="@{(v) -> view.goToTabFragment()}"/>
 
                 <Button
                     android:id="@+id/btnItem"

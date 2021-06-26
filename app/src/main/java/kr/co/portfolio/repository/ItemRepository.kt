@@ -3,13 +3,14 @@ package kr.co.portfolio.repository
 import kr.co.portfolio.data.ProductResponse
 import kr.co.portfolio.network.GithubApi
 import kr.co.portfolio.network.module.NetworkResponse
-import javax.inject.Inject
+import kr.co.portfolio.room.RecentlySearchDao
 
 /**
  * Created by kwon on 2021/06/23
  **/
-class ItemRepository @Inject constructor(
+class ItemRepository constructor(
     private val api: GithubApi,
+    private val dataDao : RecentlySearchDao
 ) {
 
     suspend fun getItemList(
@@ -17,7 +18,7 @@ class ItemRepository @Inject constructor(
         onError : (code : Int, message : String?) -> Unit,
         onComplete : (arr : ArrayList<ProductResponse>) -> Unit
     ){
-
+        onStart()
         when(val result = api.getProductList()){
 
             is NetworkResponse.Success -> {

@@ -2,6 +2,7 @@ package kr.co.portfolio.ui.activity
 
 import android.os.Bundle
 import androidx.annotation.LayoutRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.FragmentActivity
@@ -12,7 +13,7 @@ import kr.co.portfolio.viewmodel.BaseViewModel
 /**
  * Created by kwon on 2020/09/24
  **/
-abstract class BaseActivity<T : ViewDataBinding, U : BaseViewModel> : FragmentActivity() {
+abstract class BaseActivity<T : ViewDataBinding, U : BaseViewModel> : AppCompatActivity() {
 
     @LayoutRes
     abstract fun getLayoutResId(): Int             //레이아웃 지정

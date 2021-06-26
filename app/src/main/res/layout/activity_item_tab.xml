@@ -6,6 +6,9 @@
 
     <data>
         <variable
+            name="view"
+            type="kr.co.portfolio.ui.activity.ItemTabActivity" />
+        <variable
             name="vm"
             type="kr.co.portfolio.viewmodel.ItemViewModel" />
     </data>
@@ -43,12 +46,15 @@
             app:layout_constraintTop_toBottomOf="@id/appBar"
             app:layout_constraintBottom_toTopOf="@id/bottomNavi"/>
 
-        <androidx.recyclerview.widget.RecyclerView
+        <kr.co.portfolio.ui.custom.MaxHeightRecyclerView
             android:id="@+id/rvSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/appBar"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:activity="@{view}"
+            app:viewModel="@{vm}"
+            app:item="@{vm.searchLiveData}" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavi"

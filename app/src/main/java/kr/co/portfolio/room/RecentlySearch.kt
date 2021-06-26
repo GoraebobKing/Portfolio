@@ -11,8 +11,7 @@ data class RecentlySearch (
 
     @PrimaryKey(autoGenerate = true)
     var seq : Int,
-    var search : String,
-    var searchDate : String
+    var search : String
 
 
 )
