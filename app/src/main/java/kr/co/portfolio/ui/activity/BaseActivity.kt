@@ -5,6 +5,7 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.FragmentActivity
+import kr.co.portfolio.util.AlertUtils
 import kr.co.portfolio.viewmodel.BaseViewModel
 
 
@@ -47,6 +48,9 @@ abstract class BaseActivity<T : ViewDataBinding, U : BaseViewModel> : FragmentAc
 
         getViewModel()?.errorResponse?.observe(this,{
 
+            AlertUtils.showAlert(this, it.second, positiveEvent = {
+                getViewModel()?.errorLaunch?.invoke()
+            })
         })
     }
 

@@ -22,4 +22,5 @@ open class BaseViewModel : ViewModel() {
 
     //통신 에러 처리
     var errorResponse = MutableLiveData<Pair<BaseExceptionNavigator, String>>()
+    var errorLaunch : () -> Unit = {}
 }
