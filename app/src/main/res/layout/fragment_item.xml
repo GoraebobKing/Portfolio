@@ -6,6 +6,9 @@
 
     <data>
         <variable
+            name="view"
+            type="kr.co.portfolio.ui.fragment.ItemFragment" />
+        <variable
             name="vm"
             type="kr.co.portfolio.viewmodel.ItemViewModel" />
     </data>
@@ -21,6 +24,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:view="@{view}"
             app:item="@{vm.itemLiveData}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

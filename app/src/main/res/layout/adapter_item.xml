@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ivItemThumbNail"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -21,7 +21,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:scaleType="fitXY" />
+            android:scaleType="fitXY"
+            app:loadUrl="@{item.image}"/>
 
         <TextView
             android:id="@+id/tvTitle"
@@ -30,25 +31,37 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="20dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/tvInfomation"
+            app:layout_constraintBottom_toTopOf="@id/tvInformation"
             app:layout_constraintStart_toEndOf="@id/ivItemThumbNail"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="@{item.title}"
-            tools:text="TEST"
-            android:textSize="13sp"/>
+            android:textSize="16sp"
+            android:textColor="#444444"
+            tools:text="TEST" />
 
         <TextView
-            android:id="@+id/tvInfomation"
+            android:id="@+id/tvInformation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/tvTitle"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/chkProduct"
             app:layout_constraintStart_toStartOf="@id/tvTitle"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="@{``+item.price}"
-            tools:text="TESTTESTTEST"
-            android:textSize="13sp"/>
+            android:textSize="16sp"
+            android:textColor="#444444"
+            android:textStyle="bold"
+            tools:text="TESTTESTTEST" />
 
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/chkProduct"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:layout_constraintTop_toBottomOf="@id/tvInformation"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvTitle"
+            android:checked="@={item.checked}"
+            android:button="@drawable/item_adapter_checked"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

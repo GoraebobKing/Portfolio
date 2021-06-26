@@ -46,7 +46,7 @@ abstract class BaseActivity<T : ViewDataBinding, U : BaseViewModel> : FragmentAc
     open fun initObserve(){
 
         getViewModel()?.errorResponse?.observe(this,{
-
+            
         })
     }
 

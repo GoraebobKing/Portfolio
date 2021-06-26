@@ -17,6 +17,7 @@ class ItemFragment : BaseFragment<FragmentItemBinding, ItemViewModel>() {
 
 
     override fun viewInit() {
+        binding.view = this
         binding.vm = itemViewModel
     }
 

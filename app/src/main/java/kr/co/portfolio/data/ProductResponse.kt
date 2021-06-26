@@ -19,5 +19,6 @@ data class ProductResponse(
     @SerializedName("category")
     var category : String? = null,
     @SerializedName("image")
-    var image : String? = null
+    var image : String? = null,
+    var checked : Boolean = false
 )
