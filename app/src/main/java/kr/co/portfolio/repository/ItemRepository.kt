@@ -3,6 +3,8 @@ package kr.co.portfolio.repository
 import kr.co.portfolio.data.ProductResponse
 import kr.co.portfolio.network.GithubApi
 import kr.co.portfolio.network.module.NetworkResponse
+import kr.co.portfolio.preferences.AccountManager
+import kr.co.portfolio.room.RecentlySearch
 import kr.co.portfolio.room.RecentlySearchDao
 
 /**
@@ -33,6 +35,13 @@ class ItemRepository constructor(
                 onError(result.statusCode, result.message)
             }
         }
+    }
 
+    suspend fun insertSearchData(str : String){
+        dataDao.inert(RecentlySearch(str))
+    }
+
+    suspend fun getSearchList() : List<RecentlySearch>{
+        return dataDao.getSearchList()
     }
 }

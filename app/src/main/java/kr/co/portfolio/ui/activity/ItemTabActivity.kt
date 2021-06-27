@@ -11,10 +11,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kr.co.portfolio.R
 import kr.co.portfolio.databinding.ActivityItemTabBinding
+import kr.co.portfolio.preferences.AccountManager
 import kr.co.portfolio.ui.fragment.*
+import kr.co.portfolio.util.Const
 import kr.co.portfolio.util.FragmentExtension.hideAndShowFragment
 import kr.co.portfolio.util.Logger
 import kr.co.portfolio.viewmodel.ItemViewModel
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -22,6 +25,9 @@ class ItemTabActivity : BaseActivity<ActivityItemTabBinding, ItemViewModel>(),
     BottomNavigationView.OnNavigationItemSelectedListener, Toolbar.OnMenuItemClickListener {
 
     private val itemViewModel : ItemViewModel by viewModels()
+
+    @Inject
+    lateinit var account : AccountManager
 
     override fun getLayoutResId() = R.layout.activity_item_tab
     override fun getViewModel() = itemViewModel
@@ -45,11 +51,18 @@ class ItemTabActivity : BaseActivity<ActivityItemTabBinding, ItemViewModel>(),
         Logger.e("onCreateOptionsMenu")
         menuInflater.inflate(R.menu.menu_toolbar, menu)
 
+        menu.findItem(R.id.tool_item_2).title = saveSearchLabelChage()
+
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         (menu.findItem(R.id.tool_item_3).actionView as SearchView).apply{
             this.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     Logger.e("Query $query")
+                    query?.let {
+                        if(account.getBoolean(Const.SAVE_SEARCH_YN)){
+                            itemViewModel.setSearchItem(it)
+                        }
+                    }
                     clearFocus()
                     return false
                 }
@@ -60,10 +73,11 @@ class ItemTabActivity : BaseActivity<ActivityItemTabBinding, ItemViewModel>(),
                 }
             })
 
-            this.setOnFocusChangeListener { _, hasFocus ->
+
+            this.setOnQueryTextFocusChangeListener { _, hasFocus ->
                 Logger.e("SearchView hasFocus : $hasFocus")
                 if(hasFocus){
-
+                    itemViewModel.getSearchList()
                 } else {
 
                 }
@@ -86,6 +100,8 @@ class ItemTabActivity : BaseActivity<ActivityItemTabBinding, ItemViewModel>(),
 
             R.id.tool_item_2 -> {
                 Logger.e("저장 기능 on/off")
+                account.setBoolean(Const.SAVE_SEARCH_YN, !account.getBoolean(Const.SAVE_SEARCH_YN))
+                item.title = saveSearchLabelChage()
             }
 
 
@@ -117,6 +133,19 @@ class ItemTabActivity : BaseActivity<ActivityItemTabBinding, ItemViewModel>(),
         return false
     }
 
+    override fun initObserve() {
+        super.initObserve()
 
+
+    }
+
+
+    private fun saveSearchLabelChage() : String{
+        return if(account.getBoolean(Const.SAVE_SEARCH_YN)){
+            getString(R.string.tool_menu_3)
+        } else {
+            getString(R.string.tool_menu_2)
+        }
+    }
 
 }

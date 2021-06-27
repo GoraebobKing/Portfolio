@@ -60,7 +60,7 @@
                     android:background="@color/design_default_color_on_secondary"/>
 
 
-                <kr.co.kwonsample.ui.custom.TestView
+                <kr.co.portfolio.ui.custom.TestView
                     android:id="@+id/custom"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"

@@ -1,4 +1,4 @@
-package kr.co.kwonsample.ui.custom
+package kr.co.portfolio.ui.custom
 
 import android.content.Context
 import android.graphics.*
@@ -87,11 +87,6 @@ class TestView : View {
         circleRect.set((sizeWidth*2+5).toFloat(), 0f, (sizeWidth*3-5).toFloat(), (sizeWidth-10).toFloat())
 
         canvas?.drawOval(circleRect, circlePaint)
-
-
-
-
-
 
     }
 }

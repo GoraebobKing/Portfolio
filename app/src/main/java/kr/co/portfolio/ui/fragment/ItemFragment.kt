@@ -22,6 +22,6 @@ class ItemFragment : BaseFragment<FragmentItemBinding, ItemViewModel>() {
     }
 
     override fun initObserver() {
-
+        super.initObserver()
     }
 }

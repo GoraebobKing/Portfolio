@@ -5,11 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.job
 import kotlinx.coroutines.launch
 import kr.co.portfolio.data.ProductResponse
 import kr.co.portfolio.repository.ItemRepository
 import kr.co.portfolio.room.RecentlySearch
+import kr.co.portfolio.util.Logger
 import javax.inject.Inject
 
 @HiltViewModel
@@ -44,4 +44,15 @@ class ItemViewModel @Inject constructor(private val repo : ItemRepository): Base
         }
     }
 
+    fun setSearchItem(str : String){
+        viewModelScope.launch(responseJob) {
+            repo.insertSearchData(str)
+        }
+    }
+
+    fun getSearchList(){
+        viewModelScope.launch(responseJob) {
+            searchLiveData.postValue(repo.getSearchList().toMutableList())
+        }
+    }
 }

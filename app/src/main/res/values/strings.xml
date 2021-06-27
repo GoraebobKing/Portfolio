@@ -9,6 +9,7 @@
 
     <string name="tool_menu_1">자동저장 삭제</string>
     <string name="tool_menu_2">자동저장 ON</string>
+    <string name="tool_menu_3">자동저장 OFF</string>
 
     <string name="tool_menu_icon_search">검색</string>
 

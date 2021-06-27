@@ -15,22 +15,10 @@ import kr.co.portfolio.ui.custom.CustomItemDecoration
 import kr.co.portfolio.ui.custom.MaxHeightRecyclerView
 import kr.co.portfolio.ui.fragment.ItemFragment
 import kr.co.portfolio.util.Common.toPx
+import kr.co.portfolio.util.Logger
 import kr.co.portfolio.viewmodel.ItemViewModel
 
 object ItemViewBind {
-
-//    @JvmStatic
-//    @BindingAdapter(value =[
-//        "view",
-//        "model"
-//    ])
-//    fun activitySearchView(
-//        view : MaterialToolbar,
-//        viewModel : ItemViewModel
-//    ){
-//        view.menu.findItem()
-//    }
-
 
 
     @JvmStatic
@@ -53,7 +41,7 @@ object ItemViewBind {
                     }
                 }
             }?: run {
-                ItemAdapter().run {
+                SearchAdapter().run {
                     view.adapter = this
                     view.addItemDecoration(CustomItemDecoration(1.toPx(it), Color.parseColor("#ebebeb"),0,0))
                     view.setOnClickListener{

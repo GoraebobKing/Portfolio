@@ -8,17 +8,17 @@ import androidx.room.*
 @Dao
 interface RecentlySearchDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert
     fun inert(response: RecentlySearch)
 
-    @Update()
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     fun update(response: RecentlySearch)
 
     @Delete
     fun delete(response: RecentlySearch)
 
     @Query("SELECT * from SaveSearch ORDER BY seq DESC")
-    fun getAll(): List<RecentlySearch>
+    fun getSearchList(): List<RecentlySearch>
 
     @Query("SELECT * from SaveSearch where search like ('%'||:str||'%') ORDER BY seq DESC")
     fun getSearch(str : String): List<RecentlySearch>
