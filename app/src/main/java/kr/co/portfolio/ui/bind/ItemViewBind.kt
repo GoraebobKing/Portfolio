@@ -33,20 +33,18 @@ object ItemViewBind {
         viewModel : ItemViewModel,
         item : MutableList<RecentlySearch>?
     ){
-        activity?.let {
-            view.adapter?.let {adapter ->
-                item?.let {
-                    if(adapter is SearchAdapter){
-                        adapter.setItemList(it)
-                    }
+        view.adapter?.let {adapter ->
+            item?.let {
+                if(adapter is SearchAdapter){
+                    adapter.setItemList(it)
                 }
-            }?: run {
-                SearchAdapter().run {
-                    view.adapter = this
-                    view.addItemDecoration(CustomItemDecoration(1.toPx(it), Color.parseColor("#ebebeb"),0,0))
-                    view.setOnClickListener{
-                        //viewModel로
-                    }
+            }
+        }?: run {
+            SearchAdapter().run {
+                view.adapter = this
+                view.addItemDecoration(CustomItemDecoration(1.toPx(activity), Color.parseColor("#ebebeb"),0,0))
+                view.setOnClickListener{
+                    //viewModel로
                 }
             }
         }

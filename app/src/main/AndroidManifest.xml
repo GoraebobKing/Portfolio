@@ -33,12 +33,21 @@
         <activity
             android:name=".ui.activity.NetworkActivity" />
 
+
+        <activity
+            android:name=".ui.activity.CustomActivity" />
+
         <activity
             android:name=".ui.activity.ItemTabActivity" >
 
             <meta-data android:name="android.app.searchable"
                 android:resource="@xml/searchable"
                 android:value=".ui.activity.ItemTabActivity"/>
+
+        </activity>
+
+        <activity android:name=".ui.activity.ItemDetailActivity"
+            android:theme="@style/AppTheme">
 
         </activity>
 

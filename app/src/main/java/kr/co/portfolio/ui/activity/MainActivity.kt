@@ -18,10 +18,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, BaseViewModel>() {
         binding.view = this
     }
 
-    fun goToTabFragment(){
-
+    fun goToCustomActivity(){
+        Intent(this, CustomActivity::class.java).apply {
+            startActivity(this)
+        }
     }
-
 
 
     fun goToNetworkActivity(){

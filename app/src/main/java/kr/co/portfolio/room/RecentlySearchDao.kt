@@ -8,7 +8,7 @@ import androidx.room.*
 @Dao
 interface RecentlySearchDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun inert(response: RecentlySearch)
 
     @Update(onConflict = OnConflictStrategy.REPLACE)

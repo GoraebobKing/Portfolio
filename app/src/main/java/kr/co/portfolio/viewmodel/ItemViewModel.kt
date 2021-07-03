@@ -30,7 +30,9 @@ class ItemViewModel @Inject constructor(private val repo : ItemRepository): Base
     private fun getItemViewList(){
         viewModelScope.launch(responseJob) {
             repo.getItemList(
-                onStart = {},
+                onStart = {
+                    isLoadingData.postValue(true)
+                },
                 onError = {code, message ->
                     errorLaunch = {
                         getItemViewList()
@@ -38,6 +40,10 @@ class ItemViewModel @Inject constructor(private val repo : ItemRepository): Base
                     errorResponse.postValue(Pair(BaseExceptionNavigator.NETWORK_ERROR, message?:"통신오류"))
                 },
                 onComplete = {
+                    isLoadingData.postValue(false)
+                },
+                onResult = {
+                    isLoadingData.postValue(false)
                     itemLiveData.postValue(it)
                 }
             )

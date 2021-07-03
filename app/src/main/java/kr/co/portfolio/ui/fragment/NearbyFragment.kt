@@ -7,7 +7,7 @@ import kr.co.portfolio.viewmodel.BaseViewModel
 /**
  * Created by kwon on 2021/06/05
  **/
-class EmptyFragment3 : BaseFragment<FragmentEmpty3Binding, BaseViewModel>(){
+class NearbyFragment : BaseFragment<FragmentEmpty3Binding, BaseViewModel>(){
 
     override fun getLayoutResId() = R.layout.fragment_empty_3
     override fun getViewModel() = null

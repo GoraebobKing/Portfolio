@@ -18,7 +18,8 @@ class ItemRepository constructor(
     suspend fun getItemList(
         onStart : () -> Unit,
         onError : (code : Int, message : String?) -> Unit,
-        onComplete : (arr : ArrayList<ProductResponse>) -> Unit
+        onComplete : () -> Unit,
+        onResult : (arr : ArrayList<ProductResponse>) -> Unit,
     ){
         onStart()
         when(val result = api.getProductList()){
@@ -27,7 +28,7 @@ class ItemRepository constructor(
                 if(result.body.isNullOrEmpty()){
                     onError(result.statusCode, "데이터가 없습니다.")
                 } else {
-                    onComplete(result.body)
+                    onResult(result.body)
                 }
             }
 
@@ -35,6 +36,8 @@ class ItemRepository constructor(
                 onError(result.statusCode, result.message)
             }
         }
+
+        onComplete()
     }
 
     suspend fun insertSearchData(str : String){

@@ -11,6 +11,12 @@
         <item name="windowActionBarOverlay">true</item>
     </style>
 
+
+    <style name="ItemDetailTheme" parent="AppTheme">
+        <item name="android:windowSharedElementEnterTransition">@transition/change_image_transform</item>
+        <item name="android:windowSharedElementExitTransition">@transition/change_image_transform</item>
+    </style>
+
     <style name="CustomEditStyle" parent="Widget.AppCompat.EditText">
         <item name="colorControlNormal">@android:color/transparent</item>
         <item name="colorControlActivated">@android:color/transparent</item>

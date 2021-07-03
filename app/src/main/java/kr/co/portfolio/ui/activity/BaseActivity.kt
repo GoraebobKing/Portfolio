@@ -29,9 +29,8 @@ abstract class BaseActivity<T : ViewDataBinding, U : BaseViewModel> : AppCompatA
         super.onCreate(savedInstanceState)
 
 //        AndroidInjection.inject(this)
-
         binding = DataBindingUtil.setContentView(this, getLayoutResId())
-
+        binding.lifecycleOwner = this
 //        when(getModelId()){
 //
 //            BaseViewModel::class.java -> { }

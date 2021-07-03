@@ -7,7 +7,7 @@ import kr.co.portfolio.viewmodel.BaseViewModel
 /**
  * Created by kwon on 2021/06/05
  **/
-class EmptyFragment2 : BaseFragment<FragmentEmpty2Binding, BaseViewModel>(){
+class FavoriteFragment : BaseFragment<FragmentEmpty2Binding, BaseViewModel>(){
 
     override fun getLayoutResId() = R.layout.fragment_empty_2
     override fun getViewModel() = null

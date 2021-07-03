@@ -1,12 +1,8 @@
 package kr.co.portfolio.ui.activity
 
-import android.view.MenuItem
-import androidx.fragment.app.Fragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import kr.co.portfolio.R
 import kr.co.portfolio.databinding.ActivityTabBinding
 import kr.co.portfolio.ui.fragment.*
-import kr.co.portfolio.util.FragmentExtension.hideAndShowFragment
 import kr.co.portfolio.viewmodel.BaseViewModel
 
 /**
@@ -22,8 +18,8 @@ class TabActivity : BaseActivity<ActivityTabBinding, BaseViewModel>() {
     //뭔가 할게 생기면 명칭 변경하여 작업
     private var motionFragment : MotionLayoutFragment? = null
     private var coordiFragment : CoordinatorFragment? = null
-    private var emptyFragment2 : EmptyFragment2? = null
-    private var emptyFragment3 : EmptyFragment3? = null
+    private var favoriteFragment : FavoriteFragment? = null
+    private var emptyFragment3 : NearbyFragment? = null
 
 
     override fun initView() {

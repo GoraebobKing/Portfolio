@@ -7,11 +7,13 @@ import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kr.co.portfolio.R
 import kr.co.portfolio.databinding.ActivityItemTabBinding
 import kr.co.portfolio.preferences.AccountManager
+import kr.co.portfolio.ui.adapter.ItemPageAdapter
 import kr.co.portfolio.ui.fragment.*
 import kr.co.portfolio.util.Const
 import kr.co.portfolio.util.FragmentExtension.hideAndShowFragment
@@ -22,7 +24,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class ItemTabActivity : BaseActivity<ActivityItemTabBinding, ItemViewModel>(),
-    BottomNavigationView.OnNavigationItemSelectedListener, Toolbar.OnMenuItemClickListener {
+    BottomNavigationView.OnNavigationItemSelectedListener, Toolbar.OnMenuItemClickListener{
 
     private val itemViewModel : ItemViewModel by viewModels()
 
@@ -33,31 +35,52 @@ class ItemTabActivity : BaseActivity<ActivityItemTabBinding, ItemViewModel>(),
     override fun getViewModel() = itemViewModel
 
     private var itemFragment : ItemFragment?= null
+    private var favoriteFragment : FavoriteFragment?= null
+    private var nearbyFragment : NearbyFragment?= null
 
+    private lateinit var itemAdapter : ItemPageAdapter
 
     override fun initView() {
         binding.view = this
         binding.vm = itemViewModel
 
+        itemAdapter = ItemPageAdapter(this)
+
+        itemFragment = ItemFragment().apply {
+            itemAdapter.addFragment(this)
+        }
+
+        favoriteFragment = FavoriteFragment().apply {
+                itemAdapter.addFragment(this)
+        }
+
+        nearbyFragment = NearbyFragment().apply {
+            itemAdapter.addFragment(this)
+        }
+
+        binding.pagerLayer.adapter = itemAdapter
         setSupportActionBar(binding.toolbar)
 
         binding.bottomNavi.setOnNavigationItemSelectedListener(this@ItemTabActivity)
         binding.bottomNavi.selectedItemId = R.id.menu_item_1
 
         binding.toolbar.setOnMenuItemClickListener(this@ItemTabActivity)
+
+        binding.pagerLayer.offscreenPageLimit = 3
+        binding.pagerLayer.registerOnPageChangeCallback(pagerCallback)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         Logger.e("onCreateOptionsMenu")
         menuInflater.inflate(R.menu.menu_toolbar, menu)
 
-        menu.findItem(R.id.tool_item_2).title = saveSearchLabelChage()
+        menu.findItem(R.id.tool_item_2).title = saveSearchLabelChange()
 
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         (menu.findItem(R.id.tool_item_3).actionView as SearchView).apply{
             this.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
-                    Logger.e("Query $query")
+//                    Logger.e("Query $query")
                     query?.let {
                         if(account.getBoolean(Const.SAVE_SEARCH_YN)){
                             itemViewModel.setSearchItem(it)
@@ -72,7 +95,6 @@ class ItemTabActivity : BaseActivity<ActivityItemTabBinding, ItemViewModel>(),
                     return false
                 }
             })
-
 
             this.setOnQueryTextFocusChangeListener { _, hasFocus ->
                 Logger.e("SearchView hasFocus : $hasFocus")
@@ -95,13 +117,14 @@ class ItemTabActivity : BaseActivity<ActivityItemTabBinding, ItemViewModel>(),
 
             R.id.tool_item_1 -> {
                 Logger.e("저장 삭제")
+
             }
 
 
             R.id.tool_item_2 -> {
                 Logger.e("저장 기능 on/off")
                 account.setBoolean(Const.SAVE_SEARCH_YN, !account.getBoolean(Const.SAVE_SEARCH_YN))
-                item.title = saveSearchLabelChage()
+                item.title = saveSearchLabelChange()
             }
 
 
@@ -116,31 +139,72 @@ class ItemTabActivity : BaseActivity<ActivityItemTabBinding, ItemViewModel>(),
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        val navigation = when (item.itemId) {
             R.id.menu_item_1 -> {
+                0
+            }
 
-                if (itemFragment == null) {
-                    itemFragment = ItemFragment()
-                }
+            R.id.menu_item_2 -> {
+                1
+            }
 
-                itemFragment?.let {
-                    hideAndShowFragment(it)
-                }
+            R.id.menu_item_3 -> {
+                2
+            }
 
-                return true
+            else -> {
+                0
             }
         }
-        return false
+
+        if(navigation != binding.pagerLayer.currentItem){
+            binding.pagerLayer.currentItem = navigation
+        }
+
+        return true
+    }
+
+    private val pagerCallback = object : ViewPager2.OnPageChangeCallback() {
+        override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+            super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+        }
+        override fun onPageScrollStateChanged(state: Int) {
+            super.onPageScrollStateChanged(state)
+        }
+
+        override fun onPageSelected(position: Int) {
+            super.onPageSelected(position)
+            Logger.e("onPageSelected $position")
+
+            val navigation = when(position) {
+                0 -> {
+                    R.id.menu_item_1
+                }
+
+                1 -> {
+                    R.id.menu_item_2
+                }
+
+                2 -> {
+                    R.id.menu_item_3
+                }
+
+                else -> {
+                    R.id.menu_item_1
+                }
+            }
+
+            if(binding.bottomNavi.selectedItemId != navigation){
+                binding.bottomNavi.selectedItemId = navigation
+            }
+        }
     }
 
     override fun initObserve() {
         super.initObserve()
-
-
     }
 
-
-    private fun saveSearchLabelChage() : String{
+    private fun saveSearchLabelChange() : String{
         return if(account.getBoolean(Const.SAVE_SEARCH_YN)){
             getString(R.string.tool_menu_3)
         } else {
