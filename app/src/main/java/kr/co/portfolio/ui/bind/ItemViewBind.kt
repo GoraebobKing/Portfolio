@@ -31,12 +31,12 @@ object ItemViewBind {
         view : MaxHeightRecyclerView,
         activity : ItemTabActivity,
         viewModel : ItemViewModel,
-        item : MutableList<RecentlySearch>?
+        item : Pair<String, MutableList<RecentlySearch>>?
     ){
         view.adapter?.let {adapter ->
             item?.let {
                 if(adapter is SearchAdapter){
-                    adapter.setItemList(it)
+                    adapter.setItemList(it.first, it.second)
                 }
             }
         }?: run {

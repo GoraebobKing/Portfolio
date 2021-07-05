@@ -15,6 +15,7 @@ open class BaseViewModel : ViewModel() {
     }
 
     var responseJob = Dispatchers.IO + Job()
+    var databaseJob = Dispatchers.Default + Job()
 
 
     //로딩바

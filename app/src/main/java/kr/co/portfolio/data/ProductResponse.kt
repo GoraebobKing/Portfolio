@@ -1,13 +1,16 @@
 package kr.co.portfolio.data
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 /**
  * Created by kwon on 2020/09/24
  **/
 
-
+@Entity(tableName = "Product")
 data class ProductResponse(
+    @PrimaryKey
     @SerializedName("id")
     var id : Int = 0,
     @SerializedName("title")

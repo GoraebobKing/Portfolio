@@ -1,5 +1,7 @@
 package kr.co.portfolio.ui.fragment
 
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.suspendCancellableCoroutine
 import kr.co.portfolio.R
 import kr.co.portfolio.databinding.FragmentCustomBinding
 import kr.co.portfolio.viewmodel.BaseViewModel
@@ -15,6 +17,7 @@ class CustomFragment : BaseFragment<FragmentCustomBinding, BaseViewModel>() {
 
     override fun viewInit() {
         binding.fragment = this
+
 
 
     }

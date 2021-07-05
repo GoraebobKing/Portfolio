@@ -13,7 +13,8 @@ import kr.co.portfolio.databinding.AdapterItemBinding
 /**
  * Created by kwon on 2021/06/24
  **/
-class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>(), ListPreloader.PreloadModelProvider<ProductResponse> {
+class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>(),
+    ListPreloader.PreloadModelProvider<ProductResponse>{
 
     private var context : Context? = null
     private var itemList : MutableList<ProductResponse> = mutableListOf()

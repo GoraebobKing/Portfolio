@@ -47,4 +47,12 @@ class ItemRepository constructor(
     suspend fun getSearchList() : List<RecentlySearch>{
         return dataDao.getSearchList()
     }
+
+    suspend fun getSearch(str : String) : List<RecentlySearch>{
+        return dataDao.getSearch(str)
+    }
+
+    suspend fun clearAll(){
+        return dataDao.clearAll()
+    }
 }

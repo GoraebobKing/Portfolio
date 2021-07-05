@@ -8,8 +8,9 @@ import androidx.room.PrimaryKey
  **/
 @Entity(tableName = "SaveSearch")
 class RecentlySearch (
+    @PrimaryKey
     var search : String
 ){
-    @PrimaryKey(autoGenerate = true)
-    var seq : Int? = null
+//    @PrimaryKey(autoGenerate = true)
+//    var seq : Int? = null
 }

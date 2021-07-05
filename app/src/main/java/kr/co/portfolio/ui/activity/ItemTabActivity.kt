@@ -14,10 +14,13 @@ import kr.co.portfolio.R
 import kr.co.portfolio.databinding.ActivityItemTabBinding
 import kr.co.portfolio.preferences.AccountManager
 import kr.co.portfolio.ui.adapter.ItemPageAdapter
+import kr.co.portfolio.ui.adapter.SearchAdapter
 import kr.co.portfolio.ui.fragment.*
 import kr.co.portfolio.util.Const
 import kr.co.portfolio.util.FragmentExtension.hideAndShowFragment
 import kr.co.portfolio.util.Logger
+import kr.co.portfolio.util.gone
+import kr.co.portfolio.util.visible
 import kr.co.portfolio.viewmodel.ItemViewModel
 import javax.inject.Inject
 
@@ -37,6 +40,8 @@ class ItemTabActivity : BaseActivity<ActivityItemTabBinding, ItemViewModel>(),
     private var itemFragment : ItemFragment?= null
     private var favoriteFragment : FavoriteFragment?= null
     private var nearbyFragment : NearbyFragment?= null
+
+    private var searchView : SearchView? = null
 
     private lateinit var itemAdapter : ItemPageAdapter
 
@@ -78,13 +83,14 @@ class ItemTabActivity : BaseActivity<ActivityItemTabBinding, ItemViewModel>(),
 
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         (menu.findItem(R.id.tool_item_3).actionView as SearchView).apply{
+
+            searchView = this
+
             this.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
 //                    Logger.e("Query $query")
                     query?.let {
-                        if(account.getBoolean(Const.SAVE_SEARCH_YN)){
-                            itemViewModel.setSearchItem(it)
-                        }
+                        itemViewModel.setSearchItem(it)
                     }
                     clearFocus()
                     return false
@@ -92,6 +98,11 @@ class ItemTabActivity : BaseActivity<ActivityItemTabBinding, ItemViewModel>(),
 
                 override fun onQueryTextChange(newText: String?): Boolean {
                     Logger.e("Query $newText")
+                    if(account.getBoolean(Const.SAVE_SEARCH_YN)){
+                        newText?.let{ str ->
+                            itemViewModel.getSearchList(str)
+                        }
+                    }
                     return false
                 }
             })
@@ -99,9 +110,9 @@ class ItemTabActivity : BaseActivity<ActivityItemTabBinding, ItemViewModel>(),
             this.setOnQueryTextFocusChangeListener { _, hasFocus ->
                 Logger.e("SearchView hasFocus : $hasFocus")
                 if(hasFocus){
-                    itemViewModel.getSearchList()
+                    binding.rvSearch.visible()
                 } else {
-
+                    binding.rvSearch.gone()
                 }
             }
 
@@ -117,7 +128,12 @@ class ItemTabActivity : BaseActivity<ActivityItemTabBinding, ItemViewModel>(),
 
             R.id.tool_item_1 -> {
                 Logger.e("저장 삭제")
-
+                itemViewModel.clearSaveData()
+                binding.rvSearch.adapter?.let {adapter ->
+                    if(adapter is SearchAdapter){
+                        adapter.setClearList()
+                    }
+                }
             }
 
 
@@ -202,6 +218,7 @@ class ItemTabActivity : BaseActivity<ActivityItemTabBinding, ItemViewModel>(),
 
     override fun initObserve() {
         super.initObserve()
+
     }
 
     private fun saveSearchLabelChange() : String{
