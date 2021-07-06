@@ -25,8 +25,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginStart="18dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:view="@{view}"
-            app:item="@{vm.itemLiveData}"/>
+            app:itemView="@{view}"
+            app:itemModel="@{vm}"
+            app:itemData="@{vm.itemLiveData}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

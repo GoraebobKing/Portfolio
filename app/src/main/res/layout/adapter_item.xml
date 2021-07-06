@@ -21,6 +21,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:transitionName="TRANSITION_IMAGE"
             android:scaleType="fitXY"
             app:loadUrl="@{item.image}"/>
 
@@ -34,6 +35,7 @@
             app:layout_constraintBottom_toTopOf="@id/tvInformation"
             app:layout_constraintStart_toEndOf="@id/ivItemThumbNail"
             app:layout_constraintEnd_toEndOf="parent"
+            android:transitionName="TRANSITION_TITLE"
             android:text="@{item.title}"
             android:textSize="16sp"
             android:textColor="#444444"
@@ -55,8 +57,8 @@
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/chkProduct"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             app:layout_constraintTop_toBottomOf="@id/tvInformation"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/tvTitle"

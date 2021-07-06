@@ -1,7 +1,9 @@
 package kr.co.portfolio.ui.adapter
 
 import android.content.Context
+import android.os.SystemClock
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -9,6 +11,7 @@ import com.bumptech.glide.ListPreloader
 import com.bumptech.glide.RequestBuilder
 import kr.co.portfolio.data.ProductResponse
 import kr.co.portfolio.databinding.AdapterItemBinding
+import kr.co.portfolio.util.Logger
 
 /**
  * Created by kwon on 2021/06/24
@@ -18,6 +21,10 @@ class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>(),
 
     private var context : Context? = null
     private var itemList : MutableList<ProductResponse> = mutableListOf()
+
+    private var listener : onClicked? = null
+
+    private var mLastClickTime : Long = 0
 
     init {
         setHasStableIds(false)
@@ -37,6 +44,10 @@ class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>(),
 
     override fun getItemId(position: Int): Long {
         return position.toLong()
+    }
+
+    fun setOnClicked(listener : onClicked){
+        this.listener = listener
     }
 
     fun setItemList(item : MutableList<ProductResponse>){
@@ -61,8 +72,23 @@ class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>(),
         fun bind(item : ProductResponse){
             _binding.item = item
             _binding.root.setOnClickListener {
-                item.checked = !item.checked
+                if(SystemClock.elapsedRealtime() - mLastClickTime > 1000){
+                    val pos = adapterPosition
+                    if ( pos != RecyclerView.NO_POSITION){
+                        listener?.itemClick(_binding.ivItemThumbNail, item)
+                    }
+                }
+            }
+            _binding.chkProduct.setOnClickListener {
+                item.checked = _binding.chkProduct.isChecked
+                Logger.e("클릭 이벤트 ${_binding.chkProduct.isChecked}")
+                listener?.itemFavorite(item)
             }
         }
+    }
+
+    interface onClicked {
+        fun itemClick(view: View, item: ProductResponse)
+        fun itemFavorite(item: ProductResponse)
     }
 }

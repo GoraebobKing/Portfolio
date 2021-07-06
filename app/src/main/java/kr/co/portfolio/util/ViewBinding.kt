@@ -2,7 +2,9 @@ package kr.co.portfolio.util
 
 import android.graphics.drawable.AnimationDrawable
 import android.view.View
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
+import com.bumptech.glide.Glide
 
 /**
  * Created by kwon on 2021/06/04

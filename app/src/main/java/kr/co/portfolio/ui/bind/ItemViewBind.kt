@@ -1,6 +1,7 @@
 package kr.co.portfolio.ui.bind
 
 import android.graphics.Color
+import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.R
 import androidx.databinding.BindingAdapter
@@ -44,21 +45,21 @@ object ItemViewBind {
                 view.adapter = this
                 view.addItemDecoration(CustomItemDecoration(1.toPx(activity), Color.parseColor("#ebebeb"),0,0))
                 view.setOnClickListener{
-                    //viewModel로
                 }
             }
         }
     }
 
 
-
     @JvmStatic
     @BindingAdapter(
-        "view",
-        "item")
+        "itemView",
+        "itemModel",
+        "itemData")
     fun fragmentItemDataSetting(
         view : RecyclerView,
         fragment : ItemFragment,
+        model : ItemViewModel,
         item : MutableList<ProductResponse>?
     ){
 
@@ -73,6 +74,15 @@ object ItemViewBind {
                 ItemAdapter().run {
                     view.adapter = this
                     view.addItemDecoration(CustomItemDecoration(1.toPx(it), Color.parseColor("#ebebeb"),0,0))
+                    setOnClicked(object : ItemAdapter.onClicked{
+                        override fun itemClick(view: View, item: ProductResponse) {
+                            (fragment.requireActivity() as ItemTabActivity).goToItemDetailActivity(view, item)
+                        }
+
+                        override fun itemFavorite(item: ProductResponse) {
+                            model.favoriteOption(item)
+                        }
+                    })
                 }
             }
         }

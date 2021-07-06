@@ -7,6 +7,7 @@ import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
 import kr.co.portfolio.network.GithubApi
 import kr.co.portfolio.repository.ItemRepository
+import kr.co.portfolio.room.ProductResponseDao
 import kr.co.portfolio.room.RecentlySearchDao
 
 /**
@@ -20,5 +21,6 @@ object RepositoryModule {
     @ViewModelScoped
     fun providerItemRepository(
         api : GithubApi,
-        dataDao : RecentlySearchDao) : ItemRepository = ItemRepository(api, dataDao)
+        dataDao : RecentlySearchDao,
+        productDao : ProductResponseDao) : ItemRepository = ItemRepository(api, dataDao, productDao)
 }

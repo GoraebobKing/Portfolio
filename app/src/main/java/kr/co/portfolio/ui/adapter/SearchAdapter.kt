@@ -47,7 +47,7 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>(){
     inner class SearchViewHolder(private val context : Context, private val _binding : AdapterSearchLayerBinding) : RecyclerView.ViewHolder(_binding.root) {
 
         fun bind(response : RecentlySearch){
-            response.search.getSectionOfTextColor(context, R.color.c5b83f3, response.search, searchLabel)
+            _binding.tvSearchLabel.text = response.search.getSectionOfTextColor(context, R.color.c5b83f3, response.search, searchLabel)
 
             _binding.root.setOnClickListener{
                 listener?.onClick(response)

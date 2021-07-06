@@ -102,18 +102,29 @@ class ItemViewModel @Inject constructor(private val repo : ItemRepository, priva
             }
 
             //데이터가잇을경우 보여주고 없을경우 팝업
-            if(searchList.count() > 0){
-                Logger.e("검색된 데이터 사이즈 : ${searchList.count()}")
-                searchLiveData.postValue(Pair(str, searchList.toMutableList()))
-            } else {
-
-            }
+            Logger.e("검색된 데이터 사이즈 : ${searchList.count()}")
+            searchLiveData.postValue(Pair(str, searchList.toMutableList()))
+//            if(searchList.count() > 0){
+//
+//            } else {
+//
+//            }
         }
     }
 
     fun clearSaveData(){
         viewModelScope.launch(databaseJob) {
             repo.clearAll()
+        }
+    }
+
+    fun favoriteOption(item : ProductResponse){
+        viewModelScope.launch(databaseJob) {
+            if(item.checked){
+                repo.favoriteAdd(item)
+            } else {
+                repo.favoriteRemove(item)
+            }
         }
     }
 }

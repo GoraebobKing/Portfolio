@@ -1,9 +1,12 @@
 package kr.co.portfolio.ui.activity
 
+import android.app.ActivityOptions
 import android.app.SearchManager
 import android.content.Context
+import android.content.Intent
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
@@ -11,6 +14,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kr.co.portfolio.R
+import kr.co.portfolio.data.ProductResponse
 import kr.co.portfolio.databinding.ActivityItemTabBinding
 import kr.co.portfolio.preferences.AccountManager
 import kr.co.portfolio.ui.adapter.ItemPageAdapter
@@ -99,8 +103,14 @@ class ItemTabActivity : BaseActivity<ActivityItemTabBinding, ItemViewModel>(),
                 override fun onQueryTextChange(newText: String?): Boolean {
                     Logger.e("Query $newText")
                     if(account.getBoolean(Const.SAVE_SEARCH_YN)){
-                        newText?.let{ str ->
-                            itemViewModel.getSearchList(str)
+                        if(!newText.isNullOrEmpty()){
+                            itemViewModel.getSearchList(newText)
+                        } else {
+                            binding.rvSearch.adapter?.let {adapter ->
+                                if(adapter is SearchAdapter){
+                                    adapter.setClearList()
+                                }
+                            }
                         }
                     }
                     return false
@@ -226,6 +236,15 @@ class ItemTabActivity : BaseActivity<ActivityItemTabBinding, ItemViewModel>(),
             getString(R.string.tool_menu_3)
         } else {
             getString(R.string.tool_menu_2)
+        }
+    }
+
+    fun goToItemDetailActivity(view : View, product : ProductResponse){
+        Intent(this, ItemDetailActivity::class.java).apply {
+            putExtra(Const.BUNDLE_PRODUCT, product)
+            startActivity(this,
+                ActivityOptions.makeSceneTransitionAnimation(
+                    this@ItemTabActivity, view, Const.TRANSITION_IMAGE).toBundle())
         }
     }
 

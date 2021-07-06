@@ -1,9 +1,6 @@
 package kr.co.portfolio.room
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
+import androidx.room.*
 import kr.co.portfolio.data.ProductResponse
 
 /**
@@ -17,4 +14,7 @@ interface ProductResponseDao {
 
     @Delete
     suspend fun delete(response: ProductResponse)
+
+    @Query("SELECT id from PRODUCT")
+    suspend fun getFavoriteIdList() : List<Int>
 }

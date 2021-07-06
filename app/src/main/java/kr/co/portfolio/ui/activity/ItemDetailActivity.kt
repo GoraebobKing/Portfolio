@@ -2,7 +2,9 @@ package kr.co.portfolio.ui.activity
 
 import androidx.activity.viewModels
 import kr.co.portfolio.R
+import kr.co.portfolio.data.ProductResponse
 import kr.co.portfolio.databinding.ActivityItemDetailBinding
+import kr.co.portfolio.util.Const
 import kr.co.portfolio.viewmodel.ItemDetailViewModel
 
 /**
@@ -17,6 +19,9 @@ class ItemDetailActivity : BaseActivity<ActivityItemDetailBinding, ItemDetailVie
 
     override fun initView() {
 
+        intent?.getParcelableExtra<ProductResponse>(Const.BUNDLE_PRODUCT)?.let {
+            binding.item = it
+        }
     }
 
     override fun initObserve() {

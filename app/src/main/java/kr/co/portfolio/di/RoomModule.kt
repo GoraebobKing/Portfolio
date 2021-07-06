@@ -8,6 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kr.co.portfolio.room.DataBaseModule
+import kr.co.portfolio.room.ProductResponseDao
 import kr.co.portfolio.room.RecentlySearchDao
 import javax.inject.Singleton
 
@@ -29,6 +30,12 @@ object RoomModule {
     @Provides
     fun provideRecentlySearchDao(dao: DataBaseModule): RecentlySearchDao {
         return dao.todoDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideProductDao(dao: DataBaseModule): ProductResponseDao {
+        return dao.todoProductDao()
     }
 
 
