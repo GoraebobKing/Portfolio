@@ -21,5 +21,22 @@ class AlertUtils {
                 }.create().show()
         }
 
+        fun showAlert(context : Context, message : String, positiveLabel : String? = "확인", negativeLabel : String? = "취소",
+                      positiveEvent : () -> Unit , negativeEvent : () -> Unit){
+
+            AlertDialog.Builder(context)
+                .setMessage(message)
+                .setPositiveButton(positiveLabel) { dialog, _ ->
+                    dialog.dismiss()
+                    positiveEvent()
+                }
+
+                .setNegativeButton(negativeLabel) { dialog, _ ->
+                    dialog.dismiss()
+                    negativeEvent()
+                }
+                .create().show()
+        }
+
     }
 }

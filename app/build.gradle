@@ -126,6 +126,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+    implementation "com.google.android.gms:play-services-location:18.0.0"
+
 //    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
 //    implementation "org.koin:koin-androidx-fragment:$koin_version"
 //    implementation "org.koin:koin-androidx-ext:$koin_version"
